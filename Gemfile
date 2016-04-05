@@ -48,6 +48,8 @@ group :development, :test do
 
   gem 'poltergeist'
 
+  gem 'rubocop', '~> 0.39.0', require: false
+
 end
 
 group :development do
