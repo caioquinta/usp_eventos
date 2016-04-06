@@ -10,6 +10,6 @@ FactoryGirl.define do
     password_confirmation '12345678'
     factory :user_planner do
       events { [build(:event, user: nil)] }
-    end	
+    end
   end
 end

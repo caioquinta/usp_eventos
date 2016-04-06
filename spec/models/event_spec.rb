@@ -6,7 +6,8 @@ RSpec.describe Event, type: :model do
     it 'event has a user planner' do
       expect(event.planner).to_not be_nil
     end
-      it 'event has a user planner' do
+
+    it 'event has a user planner' do
       expect(event.participants).to be_empty
     end
   end
