@@ -1,0 +1,8 @@
+%h2 Cadastrar Evento
+= simple_form_for @event do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :description, required: true, autofocus: true
+    = f.input :name, required: true, autofocus: true
+  .form-actions
+    = f.button :submit, "Cadastrar"
