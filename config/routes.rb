@@ -1,7 +1,14 @@
 
 Rails.application.routes.draw do
-  root :to => "users#new"
+  authenticated :user do
+    root 'users#home', as: :authenticated_root
+  end
+
+  root to: "users#index"
+  
   devise_for :users
+
+  resources :events
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

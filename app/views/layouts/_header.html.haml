@@ -1,0 +1,23 @@
+%nav#mainNav.navbar.navbar-default
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{'data-target' => '#bs-example-navbar-collapse-1', 'data-toggle' => 'collapse', :type => 'button'}
+        %span.sr-only 
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand.page-scroll{:href => '#page-top'} USP Eventos
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => ''} Sugestões
+        - if user_signed_in?
+          %li        
+            = link_to 'Sair', destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to 'Cadastrar', new_user_registration_path
+          %li  
+            = link_to 'Entrar', new_user_session_path
