@@ -44,7 +44,7 @@ describe 'User', type: :feature do
       expect(page).to have_link 'Criar Evento', count: 2
       expect(page).to have_link 'Sair'
 
-      within(".my_events") do
+      within('.my_events') do
         click_link 'Criar Evento'
       end
       expect(page).to have_text 'Cadastrar Evento'
