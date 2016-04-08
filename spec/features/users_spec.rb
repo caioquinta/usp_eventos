@@ -55,11 +55,10 @@ describe 'User', type: :feature do
       fill_in 'event_end_date', with: '25/10/2016'
       click_button 'Cadastrar'
       expect(page).to have_text 'Meus Eventos'
-      event = Event.last
-      expect(event.name).to eql 'Back to the future date!'
-      expect(event.description).to eql 'Back to the future description'
-      expect(event.begin_date.strftime('%d/%m/%Y')).to eql '21/10/2016'
-      expect(event.end_date.strftime('%d/%m/%Y')).to eql '25/10/2016'
+      expect(page).to have_text 'Back to the future date!'
+      expect(page).to have_text 'Back to the future description'
+      expect(page).to have_text '21/10/2016'
+      expect(page).to have_text '25/10/2016'
     end
   end
 end
