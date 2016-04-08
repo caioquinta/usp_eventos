@@ -16,6 +16,7 @@ pt-BR:
         password: 'Senha'
         password_confirmation: 'Confirmar Senha'
         remember_me: 'Lembrar Senha'
+        current_password: 'Senha Atual'
     error_notification:
       default_message: "Alguns erros foram encontrados, por favor verifique:"
 
