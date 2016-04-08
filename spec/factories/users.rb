@@ -8,8 +8,8 @@ FactoryGirl.define do
     email
     password '12345678'
     password_confirmation '12345678'
-    factory :user_planner do
-      events { [build(:event, user: nil)] }
+    factory :user_participant do
+      events { [build(:event)] }
     end
   end
 end

@@ -2,7 +2,9 @@
 = simple_form_for @event do |f|
   = f.error_notification
   .form-inputs
-    = f.input :description, required: true, autofocus: true
     = f.input :name, required: true, autofocus: true
+    = f.input :description, required: true, autofocus: true
+    = f.text_field :begin_date, class: 'new_event_begin_date'
+    = f.text_field :end_date, class: 'new_event_end_date'
   .form-actions
     = f.button :submit, "Cadastrar"
