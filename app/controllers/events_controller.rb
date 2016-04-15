@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_event, only: [:show, :edit, :add_participant, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :add_participant, :remove_participant, :update, :destroy]
 
   def new
     @event = Event.new
@@ -17,6 +17,10 @@ class EventsController < ApplicationController
 
   def add_participant
     @event.participants.create(user_id: current_user.id)
+  end
+
+  def remove_participant
+    @event.participants.find_by(user_id: current_user.id).destroy
   end
 
   private

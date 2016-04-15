@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :events do
     member do
       get 'add_participant'
+      get 'remove_participant'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

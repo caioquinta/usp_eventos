@@ -16,3 +16,4 @@
     = link_to 'Participar', add_participant_event_path(event.id), remote: true, class: 'btn btn-primary'
   - else
     Confirmado!
+    = link_to 'Desistir', remove_participant_event_path(event.id), remote: true, class: 'btn btn-danger'
