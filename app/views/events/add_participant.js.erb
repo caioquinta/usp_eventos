@@ -1,1 +1,1 @@
-$('#next_event'+ #{@event.id}).html("<%= escape_javascript(render partial: 'users/event_box',  locals: { event: @event } ).html_safe %>");
+$('#next_event_<%=@event.id %>').html("<%= escape_javascript(render partial: 'users/event_box',  locals: { event: @event } ).html_safe %>");

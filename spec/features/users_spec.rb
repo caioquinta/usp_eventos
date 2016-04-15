@@ -64,7 +64,9 @@ describe 'User', type: :feature do
         expect(page).to have_text '25/10/2016'
         expect(page).to have_link 'Ver'
         expect(page).to have_link 'Participar'
+        
         click_link 'Participar'
+        expect(page).to have_text 'Confirmado'
       end
     end
   end
