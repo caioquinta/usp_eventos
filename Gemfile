@@ -48,12 +48,15 @@ group :development, :test do
 
   gem 'capybara'
 
+  gem 'capybara-screenshot'
+
   gem 'poltergeist'
 
   gem 'rubocop', '~> 0.39.0', require: false
 
   gem 'factory_girl_rails'
 
+  gem 'database_cleaner'
 end
 
 group :development do
