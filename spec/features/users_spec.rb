@@ -29,8 +29,9 @@ describe 'User', type: :feature do
   end
 
   context 'with a signed user' do
-    it 'create new event' do
+    it 'create new event', js: true do
       user = create :user
+      create :next_event
       visit '/'
       expect(page).to have_link 'Entrar'
 
@@ -43,6 +44,7 @@ describe 'User', type: :feature do
       expect(page).to have_text 'Meus Eventos'
       expect(page).to have_link 'Criar Evento', count: 2
       expect(page).to have_link 'Sair'
+      expect(page).to have_css '#next_event_' + Event.last.id.to_s
 
       within('.my_events') do
         click_link 'Criar Evento'
@@ -54,11 +56,17 @@ describe 'User', type: :feature do
       fill_in 'event_begin_date', with: '21/10/2016'
       fill_in 'event_end_date', with: '25/10/2016'
       click_button 'Cadastrar'
+
       expect(page).to have_text 'Meus Eventos'
-      expect(page).to have_text 'Back to the future date!'
-      expect(page).to have_text 'Back to the future description'
-      expect(page).to have_text '21/10/2016'
-      expect(page).to have_text '25/10/2016'
+      within('#next_event_' + Event.last.id.to_s) do
+        expect(page).to have_text 'Back to the future date!'
+        expect(page).to have_text 'Back to the future description'
+        expect(page).to have_text '21/10/2016'
+        expect(page).to have_text '25/10/2016'
+        expect(page).to have_link 'Ver'
+        expect(page).to have_link 'Participar'
+        click_link 'Participar'
+      end
     end
   end
 end

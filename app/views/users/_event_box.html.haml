@@ -10,3 +10,10 @@
 .col-xs-12
   até
   = event.end_date.strftime('%d/%m/%Y') if !event.end_date.nil?
+.col-xs-6
+  = link_to 'Ver', event_path(event.id), class: 'btn btn-success'
+.col-xs-6
+  - if current_user.participants.find_by(event_id: event.id).nil?
+    = link_to 'Participar', add_participant_event_path(event.id), remote: true, class: 'btn btn-primary'
+  - else
+    Já participando

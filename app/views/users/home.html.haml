@@ -5,7 +5,7 @@
     = link_to "Criar Evento", new_event_path, class: "btn btn-primary"
   .col-xs-12
     - Event.next_events.each do |event|
-      .col-xs-2.event_box= render 'event_box', event: event 
+      .col-xs-2.event_box{ id: "next_event_#{event.id}"}= render 'event_box', event: event 
 .col-xs-12
   %h1 Meus Eventos
 
