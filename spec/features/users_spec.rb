@@ -45,6 +45,8 @@ describe 'User', type: :feature do
       expect(page).to have_link 'Criar Evento', count: 2
       expect(page).to have_link 'Sair'
       expect(page).to have_css '#next_event_' + Event.last.id.to_s
+      expect(page).to have_text 'de '+ Event.last.begin_date.strftime('%d/%m/%Y')
+      expect(page).to_not have_text 'até '
 
       within('.my_events') do
         click_link 'Criar Evento'

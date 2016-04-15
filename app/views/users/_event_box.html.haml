@@ -2,11 +2,13 @@
   Nome:
   = event.name
 .col-xs-12
-  de
-  = event.begin_date.strftime('%d/%m/%Y') if !event.begin_date.nil?
+  - if !event.begin_date.nil?
+    de
+    = event.begin_date.strftime('%d/%m/%Y')
 .col-xs-12
-  até
-  = event.end_date.strftime('%d/%m/%Y') if !event.end_date.nil?
+  - if !event.end_date.nil?
+    até
+    = event.end_date.strftime('%d/%m/%Y')
 .col-xs-6
   = link_to 'Ver', event_path(event.id), class: 'btn btn-success'
 .col-xs-6
