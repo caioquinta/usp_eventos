@@ -18,10 +18,25 @@ describe 'User', type: :feature do
       fill_in 'user_password_confirmation', with: '12345678'
       click_button 'Cadastrar'
       expect(page).to have_text 'Meus Eventos'
+      expect(page).to have_link 'Meus Dados'
       expect(page).to have_link 'Sair'
       user = User.last
       expect(user.name).to eql 'Bruce Wayne'
       expect(user.email).to eql 'bruce@waynecorp.com'
+
+      click_link 'Meus Dados'
+      expect(page).to have_text 'Meus Dados'
+
+      fill_in 'user_name', with: 'Robin'
+      click_button 'Atualizar'
+      expect(page).to have_text 'Digite sua senha atual para confirmar as mudanças'
+
+      fill_in 'user_name', with: 'Robin'
+      fill_in 'user_current_password', with: '12345678'
+      click_button 'Atualizar'
+      expect(page).to have_text 'Próximos Eventos'
+      user.reload
+      expect(user.name).to eql 'Robin'
 
       click_link 'Sair'
       expect(page).to have_text 'Bem Vindo'

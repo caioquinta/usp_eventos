@@ -1,5 +1,5 @@
 %h2
-  Editar #{resource_name.to_s.humanize}
+  Meus Dados
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
   .form-inputs
@@ -10,6 +10,4 @@
     = f.input :current_password, hint: "Digite sua senha atual para confirmar as mudanças", required: true
   .form-actions
     = f.button :submit, "Atualizar"
-%p
-  #{link_to "Cancelar Conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
 = link_to "Voltar", :back

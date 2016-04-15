@@ -16,6 +16,8 @@
         - if user_signed_in?
           %li
             = link_to 'Criar Evento', new_event_path
+          %li
+            = link_to 'Meus Dados', edit_user_registration_path
           %li        
             = link_to 'Sair', destroy_user_session_path, method: :delete
         - else
