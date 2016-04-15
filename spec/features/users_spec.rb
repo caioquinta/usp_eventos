@@ -60,7 +60,6 @@ describe 'User', type: :feature do
       expect(page).to have_text 'Meus Eventos'
       within('#next_event_' + Event.last.id.to_s) do
         expect(page).to have_text 'Back to the future date!'
-        expect(page).to have_text 'Back to the future description'
         expect(page).to have_text '21/10/2016'
         expect(page).to have_text '25/10/2016'
         expect(page).to have_link 'Ver'
