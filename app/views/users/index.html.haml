@@ -5,8 +5,9 @@
       %h4 Participe, crie e compartilhe seus eventos na USP
       = link_to 'Cadastrar', new_user_registration_path, class: 'btn btn-primary btn-xl'
       = link_to 'Entrar', new_user_session_path, class: 'btn btn-primary btn-xl'
-  %video#video-background.fillWidth.fadeIn.wow.collapse.in{:autoplay => "", "data-wow-delay" => "0.5s", :loop => "", :poster => "https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg"}
+  %video#video-background.fillWidth.fadeIn.wow.collapse.in{:autoplay => "", "data-wow-delay" => "0.5s", :loop => true, :poster => "https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg"}
     %source{:src => "https://s3-us-west-2.amazonaws.com/coverr/mp4/Traffic-blurred2.mp4", :type => "video/mp4"}
+      Seu browser não suporta video tags, por favor atualize-o assim que puder.
       Your browser does not support the video tag. I suggest you upgrade your browser.
 .container
   .row
@@ -28,23 +29,4 @@
 %section#last
   .container
     .row
-      .col-lg-8.col-lg-offset-2.text-center
-        %h2.margin-top-0.wow.fadeIn Sugestões?
-        %hr.primary/
-        %p Precisamos da sua opinião! O USP eventos é um projeto de TCC do curso de Bacharelado em Ciência da Computação que depende da opinião dos usuários para melhorar e poder evoluir, portanto qualquer crítica ou sugestão é muito bem-vinda!
-      .col-lg-10.col-lg-offset-1.text-center
-        %form.contact-form.row
-          .col-md-4
-            %label
-            %input.form-control{:placeholder => "Nome", :type => "text"}/
-          .col-md-4
-            %label
-            %input.form-control{:placeholder => "Email", :type => "text"}/
-          .col-md-12
-            %label
-            %textarea.form-control{:placeholder => "Mensagem...", :rows => "9"}
-          .col-md-4.col-md-offset-4
-            %label
-            %button.btn.btn-primary.btn-block.btn-lg{"data-target" => "#alertModal", "data-toggle" => "modal", :type => "button"}
-              Send
-              %i.ion-android-arrow-forward
+      = render 'layouts/suggestion_form'
