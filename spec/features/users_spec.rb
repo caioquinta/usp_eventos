@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe 'User', type: :feature do
-  context 'with a unsigned user' do
-    it 'signs up successfully' do
+  context 'unsigned' do
+    it 'signs up successfully', js: true do
       visit '/'
-      expect(page).to have_link 'Cadastrar'
+      expect(page).to have_link 'Cadastrar', count: 2
       expect(page).to_not have_link 'Sair'
 
-      click_link 'Cadastrar'
+      within('.inner') { click_link 'Cadastrar' }
 
       click_button 'Cadastrar'
       expect(page).to have_text 'não pode ficar em branco', count: 2
@@ -39,7 +39,7 @@ describe 'User', type: :feature do
       expect(user.name).to eql 'Robin'
 
       click_link 'Sair'
-      expect(page).to have_text 'Bem Vindo'
+      expect(page).to have_text 'USP Eventos'
     end
   end
 
@@ -48,9 +48,9 @@ describe 'User', type: :feature do
       user = create :user
       create :next_event
       visit '/'
-      expect(page).to have_link 'Entrar'
+      expect(page).to have_link 'Entrar', count: 2
 
-      click_link 'Entrar'
+      within('.inner') { click_link 'Entrar' }
       expect(page).to have_text 'Login'
 
       fill_in 'user_email', with: user.email
@@ -63,9 +63,7 @@ describe 'User', type: :feature do
       expect(page).to have_text 'de ' + Event.last.begin_date.strftime('%d/%m/%Y')
       expect(page).to_not have_text 'até '
 
-      within('.my_events') do
-        click_link 'Criar Evento'
-      end
+      within('.navbar') { click_link 'Criar Evento' }
       expect(page).to have_text 'Cadastrar Evento'
 
       fill_in 'event_name', with: 'Back to the future date!'

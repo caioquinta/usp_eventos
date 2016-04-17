@@ -1,11 +1,11 @@
-.my_events
+.content-wrapper
   .col-xs-3
     %h1 Próximos Eventos
   .col-xs-3
-    = link_to "Criar Evento", new_event_path, class: "btn btn-primary"
+    = link_to "Criar Evento", new_event_path, class: "btn btn-info"
   .col-xs-12
     - Event.next_events.each do |event|
       .col-xs-2.event_box{ id: "next_event_#{event.id}"}= render 'event_box', event: event 
-.col-xs-12
-  %h1 Meus Eventos
+  .col-xs-12
+    %h1 Meus Eventos
 

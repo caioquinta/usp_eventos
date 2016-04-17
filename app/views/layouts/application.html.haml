@@ -1,7 +1,13 @@
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Usp Eventos
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "Codeply", :name => "generator"}/
+    %link{:href => "//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css", :rel => "stylesheet"}/
+    %script{:src => "//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"}
+    %link{:href => "//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css", :rel => "stylesheet"}/
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags

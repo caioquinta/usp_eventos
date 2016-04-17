@@ -1,15 +1,14 @@
-%nav#mainNav.navbar.navbar-default
+%nav#topNav.navbar.navbar-default.navbar-fixed-top
   .container-fluid
-    / Brand and toggle get grouped for better mobile display
     .navbar-header
-      %button.navbar-toggle.collapsed{'data-target' => '#bs-example-navbar-collapse-1', 'data-toggle' => 'collapse', :type => 'button'}
-        %span.sr-only 
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand.page-scroll{:href => root_path } USP Eventos
-    / Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %a.navbar-brand.page-scroll{:href => "#first"}
+        USP Eventos
+    #bs-navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
         %li
           %a{:href => ''} Sugestões
