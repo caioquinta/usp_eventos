@@ -1,0 +1,20 @@
+.col-lg-8.col-lg-offset-2.text-center
+  %h2.margin-top-0.wow.fadeIn Sugestões?
+  %hr.primary/
+  %p Precisamos da sua opinião! O USP eventos é um projeto de TCC do curso de Bacharelado em Ciência da Computação que depende da opinião dos usuários para melhorar e poder evoluir, portanto qualquer crítica ou sugestão é muito bem-vinda!
+.col-lg-10.col-lg-offset-1.text-center
+  %form.contact-form.row
+    .col-md-4
+      %label
+      %input.form-control{:placeholder => "Nome", :type => "text"}/
+    .col-md-4
+      %label
+      %input.form-control{:placeholder => "Email", :type => "text"}/
+    .col-md-12
+      %label
+      %textarea.form-control{:placeholder => "Mensagem...", :rows => "9"}
+    .col-md-4.col-md-offset-4
+      %label
+      %button.btn.btn-primary.btn-block.btn-lg{"data-target" => "#alertModal", "data-toggle" => "modal", :type => "button"}
+        Enviar
+        %i.ion-android-arrow-forward
