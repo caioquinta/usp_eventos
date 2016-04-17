@@ -22,7 +22,7 @@ body {
     text-align: center;
 }
 
-.signin_wrapper, .signup_wrapper {
+.signin_wrapper, .signup_wrapper, .edit_wrapper {
     text-align: center;
     font-size: 18px
 }
