@@ -1,6 +1,6 @@
-.content-wrapper.container-fluid
+.container-fluid.signup_wrapper
   .row
-    .col-lg-3.col-lg-offset-4.signup_wrapper
+    .col-lg-4.col-lg-offset-4
       %h1 Preencha Seus Dados
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = f.error_notification

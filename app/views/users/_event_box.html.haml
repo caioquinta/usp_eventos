@@ -1,19 +1,25 @@
-.col-xs-12
-  Nome:
-  = event.name
-.col-xs-12
-  - if !event.begin_date.nil?
-    de
-    = event.begin_date.strftime('%d/%m/%Y')
-.col-xs-12
-  - if !event.end_date.nil?
-    até
-    = event.end_date.strftime('%d/%m/%Y')
-.col-xs-6
-  = link_to 'Ver', event_path(event.id), class: 'btn btn-success'
-.col-xs-6
-  - if current_user.participants.find_by(event_id: event.id).nil?
-    = link_to 'Participar', add_participant_event_path(event.id), remote: true, class: 'btn btn-info'
-  - else
-    Confirmado!
-    = link_to 'Desistir', remove_participant_event_path(event.id), remote: true, class: 'btn btn-danger'
+.panel.panel-default
+  .panel-body
+    .col-lg-12.col-sm-12.col
+      %h2 
+        = event.name
+    .col-lg-12
+      .col-lg-6.col-sm-12
+        %h4
+          De
+          = event.begin_date.strftime('%d/%m/%Y')
+      .col-lg-6.col-sm-12
+        %h4  
+          Até
+          = event.end_date.strftime('%d/%m/%Y')
+    .col-lg-12.col-sm-12.col
+      %p
+        Local:
+        = event.location
+    .col-lg-6.col-sm-6
+      = link_to '+Info', event_path(event.id), class: 'btn btn-success'
+    .col-lg-6.col-sm-6
+      - if current_user.participants.find_by(event_id: event.id).nil?
+        = link_to 'Me interessa!', add_participant_event_path(event.id), remote: true, class: 'btn btn-info'
+      - else
+        = link_to 'Desistir', remove_participant_event_path(event.id), remote: true, class: 'btn btn-danger'

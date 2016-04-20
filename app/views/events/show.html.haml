@@ -1,13 +1,13 @@
-.content-wrapper
-  .col-xs-12
+.container-fluid.event_wrapper
+  .col-lg-12
     Nome:
     = @event.name
-  .col-xs-12
+  .col-lg-12
     Descrição:
     = @event.description
-  .col-xs-2
+  .col-lg-2
     de
     = @event.begin_date.strftime('%d/%m/%Y') if !@event.begin_date.nil?
-  .col-xs-10
+  .col-lg-10
     até
     = @event.end_date.strftime('%d/%m/%Y') if !@event.end_date.nil?
