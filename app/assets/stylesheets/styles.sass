@@ -1,0 +1,458 @@
+/*
+ *
+ *Landing Zero theme - A free landing page theme from BootstrapZero
+ *http://www.bootstrapzero.com */
+
+@import url(https://fonts.googleapis.com/css?family=Questrial)
+
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script:700)
+
+html, body
+  width: 100%
+  height: 100%
+
+.signin_wrapper, .signup_wrapper, .edit_wrapper, .home_wrapper, .event_wrapper
+  text-align: center
+  font-size: 18px
+  margin-top: 9%
+
+.panel-default
+  background-color: #36333d
+  min-height: 30%
+
+body
+  font-family: 'Questrial','Helvetica Neue',Arial,sans-serif
+  background-color: #36333d
+  color: white
+  webkit-tap-highlight-color: #222
+
+hr
+  max-width: 80px
+  border-width: 3px
+  opacity: 0.09
+  margin-top: 15px
+  margin-bottom: 15px
+  &.light
+    border-color: #fff
+
+a
+  color: #0E95AB
+  -webkit-transition: all .35s
+  -moz-transition: all .35s
+  transition: all .35s
+  &:hover, &:focus
+    color: #0E95AB
+    outline: 0
+
+h1, h2, h3, h4, h5, h6
+  font-family: 'Questrial','Helvetica Neue',Arial,sans-serif
+
+p
+  font-size: 17px
+  line-height: 1.7
+  margin-bottom: 20px
+
+.wide-space
+  letter-spacing: 1.6px
+
+.icon-lg
+  font-size: 50px
+  line-height: 18px
+
+.bg-primary
+  background-color: #333
+
+.bg-dark
+  color: #eee
+  background-color: #222
+
+.cursive
+  font-family: 'Dancing Script', cursive
+  text-transform: none
+
+.text-faded
+  color: rgba(245, 245, 245, 0.7)
+
+.text-dark
+  color: #111
+
+.text-primary
+  color: #9c27b0
+
+.modal-content
+  background-color: #1d1d1d
+
+section
+  padding: 70px 0
+
+aside
+  padding: 50px 0
+
+footer
+  padding: 15px
+
+.no-padding
+  padding: 0
+
+.navbar-default
+  border-color: rgba(35, 35, 35, 0.05)
+  font-family: 'Questrial','Helvetica Neue',Arial,sans-serif
+  background-color: #FDB523
+  font-weight: bold
+  -webkit-transition: all .4s
+  -moz-transition: all .4s
+  transition: all .4s
+
+.navbar-header > .navbar-brand
+  font-family: 'Questrial','Helvetica Neue',Arial,sans-serif
+  padding: 15px
+  -webkit-transition: padding .2s ease-in
+  -moz-transition: padding .2s ease-in
+  transition: padding .2s ease-in
+  &:hover, &:focus
+    color: #0E95AB
+
+.navbar-default
+  .navbar-toggle
+    &:focus, &:hover
+      background-color: #0E95AB
+    border-color: transparent
+  .navbar-collapse
+    border-color: transparent
+  .nav > li
+    > a
+      text-transform: uppercase
+      font-size: 13px
+      font-weight: 700
+      color: #eee
+      &:focus
+        text-transform: uppercase
+        font-size: 13px
+        font-weight: 700
+        color: #eee
+      &:hover, &:focus:hover
+        color: #0E95AB
+    &.active > a
+      color: #0E95AB !important
+      background-color: transparent
+      &:focus
+        color: #0E95AB !important
+        background-color: transparent
+      &:hover, &:focus:hover
+        background-color: transparent
+
+@media (min-width: 768px)
+  .navbar-default
+    border-color: transparent
+    min-height: 60px
+  .navbar-header > .navbar-brand
+    color: rgba(255, 255, 255, 0.7)
+    padding: 19px
+  .navbar-default
+    .navbar-header .navbar-brand
+      &:hover, &:focus
+        color: #f4f4f4
+    .nav > li > a
+      color: rgba(255, 255, 255, 0.8)
+      padding: 20px
+      letter-spacing: 1.1px
+      text-shadow: 1px 1px 1px rgba(60, 60, 60, 0.7)
+      &:focus
+        color: rgba(255, 255, 255, 0.8)
+        padding: 20px
+        letter-spacing: 1.1px
+        text-shadow: 1px 1px 1px rgba(60, 60, 60, 0.7)
+      &:hover, &:focus:hover
+        color: #fefefe
+    &.affix
+      border-color: rgba(34, 34, 34, 0.05)
+      background-color: #222
+      .navbar-header .navbar-brand
+        font-size: 15px
+        color: #9c27b0
+        padding: 20px
+        letter-spacing: 1px
+        &:hover, &:focus
+          color: #8b27b0
+      .nav > li > a
+        color: #ddd
+        text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.7)
+        &:focus
+          color: #ddd
+          text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.7)
+        &:hover, &:focus:hover
+          color: #0E95AB
+
+header
+  position: relative
+  min-height: auto
+  text-align: center
+  color: #fff
+  width: 100%
+  background-color: #c9c9c9
+  background-image: url('https://splashbase.s3.amazonaws.com/lifeofpix/regular/Life-of-Pix-free-stock-photos-Slate-Stone-Xeromatic-1440x953.jpg')
+  background-position: center
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  background-size: cover
+  -o-background-size: cover
+  .header-content
+    position: relative
+    width: 100%
+    padding: 100px 15px
+    text-align: center
+    z-index: 2
+    .inner
+      h1
+        margin-top: 0
+        margin-bottom: 0
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+      p
+        margin-bottom: 50px
+        font-size: 16px
+        font-weight: 300
+        color: rgba(255, 255, 255, 0.7)
+
+#video-background
+  position: absolute
+  right: 0
+  bottom: 0
+  min-width: 100%
+  min-height: 100%
+  width: auto
+  height: auto
+  z-index: 1
+  &.collapsing
+    display: none
+
+footer
+  background-color: #2d2d2d
+
+@media (min-width: 768px)
+  .icon-lg
+    font-size: 80px
+  header
+    min-height: 100%
+    .header-content
+      position: absolute
+      top: 50%
+      padding: 0 50px
+      -webkit-transform: translateY(-50%)
+      -ms-transform: translateY(-50%)
+      transform: translateY(-50%)
+      .inner
+        margin-right: auto
+        margin-left: auto
+        max-width: 1000px
+        h1
+          font-size: 53px
+        p
+          margin-right: auto
+          margin-left: auto
+          max-width: 80%
+          font-size: 18px
+  section
+    min-height: 600px
+    padding: 100px 0
+
+.form-control
+  display: block
+  width: 100%
+  height: 35px
+  padding: 6px 12px
+  font-size: 14px
+  line-height: 1.5
+  color: #36333d
+  background-color: #F0F0F0
+  background-image: none
+  border: 1px solid #36333d
+  border-radius: 4px
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+  &:focus
+    color: #222
+    background-color: #ccc
+    box-shadow: none
+
+textarea
+  resize: none
+
+.margin-top-0
+  margin-top: 0
+
+.feature
+  margin: 50px auto 0
+  max-width: 400px
+  p
+    margin-bottom: 0
+
+@media (min-width: 992px)
+  .feature
+    margin: 20px auto 0
+
+.call-to-action h2
+  margin: 0 auto 20px
+
+.gallery-box
+  display: block
+  position: relative
+  margin: 0 auto
+  max-width: 650px
+  overflow: hidden
+  .gallery-box-caption
+    display: block
+    position: absolute
+    bottom: 0
+    width: 100%
+    height: 100%
+    text-align: center
+    color: #fff
+    opacity: 0
+    background: rgba(44, 44, 44, 0.8)
+    -webkit-transition: all .35s
+    -moz-transition: all .35s
+    transition: all .35s
+    .gallery-box-content
+      position: absolute
+      top: 50%
+      width: 100%
+      text-align: center
+      transform: translateY(-50%)
+  &:hover
+    .gallery-box-caption
+      opacity: 1
+    img
+      -webkit-transform: scale(1.1)
+      -ms-transform: scale(1.1)
+      transform: scale(1.1)
+  img
+    -webkit-transition: all 300ms ease-in-out
+    transition: all 300ms ease-in-out
+
+.no-gutter > [class*=col-]
+  padding-right: 0
+  padding-left: 0
+
+.btn-default
+  border-color: #fff
+  color: #222
+  background-color: #fff
+  -webkit-transition: all .35s
+  -moz-transition: all .35s
+  transition: all .35s
+  &:hover, &:focus, &.focus, &:active, &.active
+    border-color: #ededed
+    color: #222
+    background-color: #f2f2f2
+    opacity: 0.7
+
+.open > .dropdown-toggle.btn-default
+  border-color: #ededed
+  color: #222
+  background-color: #f2f2f2
+  opacity: 0.7
+
+.btn-default
+  &:active, &.active
+    background-image: none
+
+.open > .dropdown-toggle.btn-default
+  background-image: none
+
+.btn-default
+  &.disabled, &[disabled]
+    border-color: #fff
+    background-color: #fff
+    opacity: 0.7
+
+fieldset[disabled] .btn-default
+  border-color: #fff
+  background-color: #fff
+  opacity: 0.7
+
+.btn-default
+  &.disabled:hover, &[disabled]:hover
+    border-color: #fff
+    background-color: #fff
+    opacity: 0.7
+
+fieldset[disabled] .btn-default:hover
+  border-color: #fff
+  background-color: #fff
+  opacity: 0.7
+
+.btn-default
+  &.disabled:focus, &[disabled]:focus
+    border-color: #fff
+    background-color: #fff
+    opacity: 0.7
+
+fieldset[disabled] .btn-default:focus
+  border-color: #fff
+  background-color: #fff
+  opacity: 0.7
+
+.btn-default
+  &.disabled.focus, &[disabled].focus
+    border-color: #fff
+    background-color: #fff
+    opacity: 0.7
+
+fieldset[disabled] .btn-default.focus
+  border-color: #fff
+  background-color: #fff
+  opacity: 0.7
+
+.btn-default
+  &.disabled:active, &[disabled]:active
+    border-color: #fff
+    background-color: #fff
+    opacity: 0.7
+
+fieldset[disabled] .btn-default:active
+  border-color: #fff
+  background-color: #fff
+  opacity: 0.7
+
+.btn-default
+  &.disabled.active, &[disabled].active
+    border-color: #fff
+    background-color: #fff
+    opacity: 0.7
+
+fieldset[disabled] .btn-default.active
+  border-color: #fff
+  background-color: #fff
+  opacity: 0.7
+
+.btn-default .badge
+  color: #fff
+  background-color: #222
+
+.btn
+  &.btn-primary
+    background-color: transparent
+    border: 1px solid #f0f0f0
+    border-color: #f0f0f0
+    -webkit-transition: all .35s
+    -moz-transition: all .35s
+    transition: all .35s
+    &:hover
+      opacity: 0.7
+  border: 0
+  border-radius: 290px
+  font-family: 'Helvetica Neue',Arial,sans-serif
+
+.btn-xl
+  padding: 15px 30px
+  font-size: 20px
+
+\::-moz-selection, ::selection
+  text-shadow: none
+  color: #fff
+  background: #222
+
+img
+  &::selection, &::-moz-selection
+    color: #fff
+    background: 0 0
