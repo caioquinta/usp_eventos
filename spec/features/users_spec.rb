@@ -10,14 +10,15 @@ describe 'User', type: :feature do
       within('.inner') { click_link 'Cadastrar' }
 
       click_button 'Cadastrar'
-      expect(page).to have_text 'não pode ficar em branco', count: 2
+      expect(page).to have_text 'não pode ficar em branco', count: 3
+      expect(page).to have_text 'Alguns erros foram encontrados, por favor verifique:
+'
 
       fill_in 'user_name', with: 'Bruce Wayne'
       fill_in 'user_email', with: 'bruce@waynecorp.com'
       fill_in 'user_password', with: '12345678'
       fill_in 'user_password_confirmation', with: '12345678'
       click_button 'Cadastrar'
-      expect(page).to have_text 'Meus Eventos'
       expect(page).to have_link 'Meus Dados'
       expect(page).to have_link 'Sair'
       user = User.last
@@ -56,36 +57,43 @@ describe 'User', type: :feature do
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: '12345678'
       click_button 'Entrar'
-      expect(page).to have_text 'Meus Eventos'
       expect(page).to have_link 'Criar Evento', count: 2
-      expect(page).to have_link 'Sair'
       expect(page).to have_css '#next_event_' + Event.last.id.to_s
-      expect(page).to have_text 'de ' + Event.last.begin_date.strftime('%d/%m/%Y')
-      expect(page).to_not have_text 'até '
+      expect(page).to have_text 'De ' + Event.last.begin_date.strftime('%d/%m/%Y')
+      expect(page).to have_text 'Até ' + Event.last.end_date.strftime('%d/%m/%Y')
 
       within('.navbar') { click_link 'Criar Evento' }
-      expect(page).to have_text 'Cadastrar Evento'
+      expect(page).to have_text 'Novo Evento!'
+
+      click_button 'Cadastrar'
+      expect(page).to have_text 'Alguns erros foram encontrados, por favor verifique:
+'
+      expect(page).to have_text 'não pode ficar em branco', count: 3
 
       fill_in 'event_name', with: 'Back to the future date!'
-      fill_in 'event_description', with: 'Back to the future description'
-      fill_in 'event_begin_date', with: '21/10/2016'
-      fill_in 'event_end_date', with: '25/10/2016'
+      fill_in 'event_description', with: 'Back to the future bolt accident'
+      fill_in 'event_location', with: 'Hill Valley'
+      select '21', from: 'event_begin_date_3i'
+      select 'Junho', from: 'event_begin_date_2i'
+      select (Time.now.year + 1).to_s, from: 'event_begin_date_1i'
+      select '21', from: 'event_end_date_3i'
+      select 'Outubro', from: 'event_end_date_2i'
+      select (Time.now.year + 1).to_s, from: 'event_end_date_1i'
       click_button 'Cadastrar'
 
-      expect(page).to have_text 'Meus Eventos'
+      expect(page).to have_text 'Próximos Eventos'
       within('#next_event_' + Event.last.id.to_s) do
         expect(page).to have_text 'Back to the future date!'
-        expect(page).to have_text '21/10/2016'
-        expect(page).to have_text '25/10/2016'
-        expect(page).to have_link 'Ver'
-        expect(page).to have_link 'Participar'
+        expect(page).to have_text '21/10/2017'
+        expect(page).to have_text '21/10/2017'
+        expect(page).to have_link '+Info'
+        expect(page).to have_link 'Me interessa!'
 
-        click_link 'Participar'
-        expect(page).to have_text 'Confirmado'
+        click_link 'Me interessa!'
         expect(page).to have_link 'Desistir'
 
         click_link 'Desistir'
-        expect(page).to have_text 'Participar'
+        expect(page).to have_text 'Me interessa!'
       end
     end
   end

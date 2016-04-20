@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_url, notice: 'Evento Criado com Sucesso'
     else
-      render 'events_new'
+      render 'new'
     end
   end
 
@@ -30,6 +30,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :begin_date, :end_date, :planner)
+    params.require(:event).permit(:name, :description, :begin_date, :end_date, :planner, :location, :price)
   end
 end

@@ -17,6 +17,13 @@ pt-BR:
         password_confirmation: 'Confirmar Senha'
         remember_me: 'Lembrar Senha'
         current_password: 'Senha Atual'
+      event: 
+        name: 'Nome'
+        description: 'Descrição'
+        price: 'Preço'
+        location: 'Local'
+        begin_date: 'Início'
+        end_date: 'Fim'
     error_notification:
       default_message: "Alguns erros foram encontrados, por favor verifique:"
 

@@ -1,11 +1,17 @@
-.content-wrapper
-  %h2 Cadastrar Evento
-  = simple_form_for @event do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :name, required: true, autofocus: true
-      = f.input :description, required: true, autofocus: true
-      = f.text_field :begin_date, class: 'new_event_begin_date'
-      = f.text_field :end_date, class: 'new_event_end_date'
-    .form-actions
-      = f.button :submit, "Cadastrar"
+.container-fluid.event_wrapper
+  .row
+    .col-lg-6.col-lg-offset-3
+      %h1 Novo Evento!
+      = simple_form_for @event do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :name, required: true, autofocus: true
+          = f.input :description, required: true, autofocus: true, :as => :text, input_html: { :style=> 'width: 100%;', :rows => 4}
+          = f.input :location, required: true, autofocus: true
+          .col-lg-12
+            .col-lg-4.col-lg-offset-4
+              = f.input :price
+          = f.input :begin_date
+          = f.input :end_date
+        .form-actions
+          = f.button :submit, "Cadastrar"
