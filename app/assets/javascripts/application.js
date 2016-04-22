@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require scripts
+//= require users
 //= require_tree .

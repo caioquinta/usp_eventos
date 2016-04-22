@@ -1,13 +1,25 @@
-.container-fluid.event_wrapper
-  .col-lg-12
-    Nome:
-    = @event.name
-  .col-lg-12
-    Descrição:
-    = @event.description
-  .col-lg-2
-    de
-    = @event.begin_date.strftime('%d/%m/%Y') if !@event.begin_date.nil?
-  .col-lg-10
-    até
-    = @event.end_date.strftime('%d/%m/%Y') if !@event.end_date.nil?
+.container-fluid.event_wrapper.col-lg-8.col-lg-offset-2{ class: "next_event_#{@event.id}"}
+  = link_to "Voltar", :back
+  .panel.panel-default
+    .panel-body
+      .col-lg-12
+        %h2= @event.name
+      .col-lg-4
+        De
+        = @event.begin_date.strftime('%d/%m/%Y') if !@event.begin_date.nil?
+      .col-lg-8
+        Até
+        = @event.end_date.strftime('%d/%m/%Y') if !@event.end_date.nil?
+      .col-lg-4
+        %h3 Preço:
+        .ion-social-usd= @event.price
+      .col-lg-4
+        %h3 Local:
+        .ion-ios-location= @event.location
+      .col-lg-4
+        %h3 Interessados:
+        .col-lg-3.ion-person-stalker= @event.participants.count
+        .col-lg-9.status= render 'users/event_box_buttons', event: @event 
+      .col-lg-12
+        %h3 Descrição:
+        = @event.description

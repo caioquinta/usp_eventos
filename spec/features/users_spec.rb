@@ -57,12 +57,12 @@ describe 'User', type: :feature do
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: '12345678'
       click_button 'Entrar'
-      expect(page).to have_link 'Criar Evento', count: 3
+      expect(page).to have_link 'Novo Evento', count: 2
       expect(page).to have_css '.next_event_' + Event.last.id.to_s
       expect(page).to have_text 'De ' + Event.last.begin_date.strftime('%d/%m/%Y')
       expect(page).to have_text 'Até ' + Event.last.end_date.strftime('%d/%m/%Y')
 
-      within('.navbar') { click_link 'Criar Evento' }
+      within('.navbar') { click_link 'Novo Evento' }
       expect(page).to have_text 'Novo Evento!'
 
       click_button 'Enviar'
@@ -81,10 +81,11 @@ describe 'User', type: :feature do
       select (Time.now.year + 1).to_s, from: 'event_end_date_1i'
       click_button 'Enviar'
 
+      created_event = Event.last
       expect(page).to have_text 'Próximos Eventos'
-      expect(page).to have_css '.next_event_' + Event.last.id.to_s, count: 2
+      expect(page).to have_css '.next_event_' + created_event.id.to_s, count: 2
       expect(page).to have_css '.ion-edit', count: 2
-      within(first('.next_event_' + Event.last.id.to_s)) do
+      within(first('.next_event_' + created_event.id.to_s)) do
         expect(page).to have_text 'Back to the future date!'
         expect(page).to have_text '21/10/2017'
         expect(page).to have_text '21/10/2017'
@@ -113,12 +114,19 @@ describe 'User', type: :feature do
       click_button 'Enviar'
 
       expect(page).to have_text 'Meus Eventos'
-      event_edited = Event.last.reload
-      expect(event_edited.name).to eql 'Evento editado' 
+      event_edited = created_event.reload
+      expect(event_edited.name).to eql 'Evento editado'
       expect(event_edited.description).to eql 'descricao'
       expect(event_edited.location).to eql 'local'
       expect(event_edited.begin_date.strftime('%d/%m/%Y')).to eql '01/01/2018'
       expect(event_edited.end_date.strftime('%d/%m/%Y')).to eql '15/02/2018'
+
+      within(first('.next_event_' + created_event.id.to_s)) { click_link '+Info' }
+      expect(page).to have_text created_event.name
+      expect(page).to have_text created_event.location
+      expect(page).to have_text created_event.description
+      expect(page).to have_text created_event.participants.count
+      expect(page).to have_text created_event.price
     end
   end
 end

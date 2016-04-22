@@ -1,13 +1,11 @@
 = simple_form_for @event do |f|
   = f.error_notification
   .form-inputs
-    = f.input :name, required: true, autofocus: true
-    = f.input :description, required: true, autofocus: true, :as => :text, input_html: { :rows => 4 }
-    = f.input :location, required: true, autofocus: true
-    .col-lg-12
-      .col-lg-4.col-lg-offset-4
-        = f.input :price
-    = f.input :begin_date
-    = f.input :end_date
+    .col-lg-12= f.input :name, required: true, autofocus: true
+    .col-lg-12= f.input :description, required: true, autofocus: true, :as => :text, input_html: { :rows => 6 }
+    .col-lg-9= f.input :location, required: true, autofocus: true
+    .col-lg-3= f.input :price
+    .col-lg-12= f.input :begin_date
+    .col-lg-12= f.input :end_date
   .form-actions
-    = f.button :submit, "Enviar"
+    .col-lg-12= f.button :submit, "Enviar"

@@ -12,17 +12,45 @@ html, body
   height: 100%
 
 .signin_wrapper, .signup_wrapper, .edit_wrapper, .home_wrapper, .event_wrapper
-  text-align: center
   font-size: 18px
   margin-top: 9%
-
-.event_box
-  font-size: 14px
-  .name
-    text-align: left
+  form .form-actions
+    text-align: center
+  .ion-person-add:before, .ion-android-cancel:before, .ion-person-stalker:before, .ion-ios-location:before, .ion-social-usd:before
+    padding-right: 5px
+    font-size: 16px
   .panel-default
     background-color: transparent
     min-height: 40%
+
+.event_box
+  text-align: center
+  font-size: 14px
+  margin-bottom: 1%
+  .name
+    text-align: left
+
+.event-floater-btn
+  position: absolute
+  top: 30%
+  right: 1%
+  width: 10%
+  height: 20%
+  -webkit-transition: all 1s ease-in-out
+  transition: all 1s ease-in-out
+  z-index: 1
+  border-radius: 290px
+  padding: 10px
+  background-color: #FDB523
+  color: white
+  text-align: center
+  box-sizing: border-box  
+  font-size: 18px
+  text-align: center
+
+.ion-document:before
+  font-size: 64px
+  display: block
 
 body
   font-family: 'Questrial','Helvetica Neue',Arial,sans-serif

@@ -1,16 +1,13 @@
 .home_wrapper
+  = link_to 'Novo Evento', new_event_path, class: 'event-floater-btn ion-document'
   - next_events = Event.next_events
   .col-lg-3
     %h1 Meus Eventos
-  .col-lg-3
-    = link_to "Criar Evento", new_event_path, class: "btn btn-warning"
   .col-lg-12
     - next_events.where(planner: current_user).each do |event|
       .col-lg-3.event_box{ class: "next_event_#{event.id}"}= render 'event_box', event: event 
   .col-lg-3
     %h1 Próximos Eventos
-  .col-lg-3
-    = link_to "Criar Evento", new_event_path, class: "btn btn-warning"
   .col-lg-12
     - next_events.each do |event|
       %li.col-lg-3.event_box{ class: "next_event_#{event.id}"}= render 'event_box', event: event 
