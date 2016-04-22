@@ -8,5 +8,5 @@ class Event < ActiveRecord::Base
   has_many :participants
   has_many :users, through: :participants
 
-  scope :next_events, -> (start_date = Time.current) { where('begin_date >= ?', start_date).order(begin_date: :asc) }
+  scope :next_events, -> { where('begin_date >= ?', Time.current).order(begin_date: :asc) }
 end

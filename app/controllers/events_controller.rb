@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: :index
   before_action :set_event, only: [:show, :edit, :add_participant, :remove_participant, :update, :destroy]
 
   def new
@@ -12,6 +13,14 @@ class EventsController < ApplicationController
       redirect_to root_url, notice: 'Evento Criado com Sucesso'
     else
       render 'new'
+    end
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to root_url, notice: 'Evento atualizado com sucesso.'   
+    else
+      render 'edit'
     end
   end
 

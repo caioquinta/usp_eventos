@@ -1,25 +1,21 @@
 .panel.panel-default
   .panel-body
-    .col-lg-12.col-sm-12.col
-      %h2 
+    .col-lg-9.col-sm-9.name
+      %p
         = event.name
+    .col-lg-3.col-sm-3
+      - if event.planner == current_user
+        = link_to '', edit_event_path(event.id), class: 'btn btn-primary ion-edit'
+    .col-lg-12.col-sm-12
+      Local:
+      = event.location
     .col-lg-12
       .col-lg-6.col-sm-12
-        %h4
-          De
-          = event.begin_date.strftime('%d/%m/%Y')
+        De
+        = event.begin_date.strftime('%d/%m/%Y')
       .col-lg-6.col-sm-12
-        %h4  
-          Até
-          = event.end_date.strftime('%d/%m/%Y')
-    .col-lg-12.col-sm-12.col
-      %p
-        Local:
-        = event.location
+        Até
+        = event.end_date.strftime('%d/%m/%Y')
     .col-lg-6.col-sm-6
       = link_to '+Info', event_path(event.id), class: 'btn btn-success'
-    .col-lg-6.col-sm-6
-      - if current_user.participants.find_by(event_id: event.id).nil?
-        = link_to 'Me interessa!', add_participant_event_path(event.id), remote: true, class: 'btn btn-info'
-      - else
-        = link_to 'Desistir', remove_participant_event_path(event.id), remote: true, class: 'btn btn-danger'
+    .col-lg-6.col-sm-6.status= render 'users/event_box_buttons', event: event

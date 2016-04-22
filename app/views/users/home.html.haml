@@ -1,10 +1,17 @@
 .home_wrapper
+  - next_events = Event.next_events
+  .col-lg-3
+    %h1 Meus Eventos
+  .col-lg-3
+    = link_to "Criar Evento", new_event_path, class: "btn btn-warning"
+  .col-lg-12
+    - next_events.where(planner: current_user).each do |event|
+      .col-lg-3.event_box{ class: "next_event_#{event.id}"}= render 'event_box', event: event 
   .col-lg-3
     %h1 Próximos Eventos
   .col-lg-3
-    = link_to "Criar Evento", new_event_path, class: "btn btn-info"
-  #scrolling.col-lg-12
-    %ul
-      - Event.next_events.each do |event|
-        %li.col-lg-3.event_box{ id: "next_event_#{event.id}"}= render 'event_box', event: event 
+    = link_to "Criar Evento", new_event_path, class: "btn btn-warning"
+  .col-lg-12
+    - next_events.each do |event|
+      %li.col-lg-3.event_box{ class: "next_event_#{event.id}"}= render 'event_box', event: event 
         

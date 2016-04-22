@@ -43,5 +43,12 @@ RSpec.describe Event, type: :model do
     it 'não deve criar sem uma description' do
       expect(build(:event, description: '')).to_not be_valid
     end
+
+    it 'deve listar proximos eventos' do
+      expect(Event.next_events.count).to eql 0
+
+      create :next_event
+      expect(Event.next_events.count).to eql 1
+    end
   end
 end

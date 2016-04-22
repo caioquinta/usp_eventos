@@ -57,15 +57,15 @@ describe 'User', type: :feature do
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: '12345678'
       click_button 'Entrar'
-      expect(page).to have_link 'Criar Evento', count: 2
-      expect(page).to have_css '#next_event_' + Event.last.id.to_s
+      expect(page).to have_link 'Criar Evento', count: 3
+      expect(page).to have_css '.next_event_' + Event.last.id.to_s
       expect(page).to have_text 'De ' + Event.last.begin_date.strftime('%d/%m/%Y')
       expect(page).to have_text 'Até ' + Event.last.end_date.strftime('%d/%m/%Y')
 
       within('.navbar') { click_link 'Criar Evento' }
       expect(page).to have_text 'Novo Evento!'
 
-      click_button 'Cadastrar'
+      click_button 'Enviar'
       expect(page).to have_text 'Alguns erros foram encontrados, por favor verifique:
 '
       expect(page).to have_text 'não pode ficar em branco', count: 3
@@ -79,22 +79,46 @@ describe 'User', type: :feature do
       select '21', from: 'event_end_date_3i'
       select 'Outubro', from: 'event_end_date_2i'
       select (Time.now.year + 1).to_s, from: 'event_end_date_1i'
-      click_button 'Cadastrar'
+      click_button 'Enviar'
 
       expect(page).to have_text 'Próximos Eventos'
-      within('#next_event_' + Event.last.id.to_s) do
+      expect(page).to have_css '.next_event_' + Event.last.id.to_s, count: 2
+      expect(page).to have_css '.ion-edit', count: 2
+      within(first('.next_event_' + Event.last.id.to_s)) do
         expect(page).to have_text 'Back to the future date!'
         expect(page).to have_text '21/10/2017'
         expect(page).to have_text '21/10/2017'
         expect(page).to have_link '+Info'
-        expect(page).to have_link 'Me interessa!'
-
-        click_link 'Me interessa!'
-        expect(page).to have_link 'Desistir'
-
-        click_link 'Desistir'
-        expect(page).to have_text 'Me interessa!'
       end
+      expect(page).to have_link 'Me interessa!', count: 3
+
+      first(:link, 'Me interessa!').click
+      expect(page).to have_link 'Desistir', count: 2
+
+      first(:link, 'Desistir').click
+      expect(page).to have_text 'Me interessa!', count: 3
+
+      first(:css, '.ion-edit').click
+      expect(page).to have_text 'Editar Evento'
+
+      fill_in 'event_name', with: 'Evento editado'
+      fill_in 'event_description', with: 'descricao'
+      fill_in 'event_location', with: 'local'
+      select '1', from: 'event_begin_date_3i'
+      select 'Janeiro', from: 'event_begin_date_2i'
+      select (Time.now.year + 2).to_s, from: 'event_begin_date_1i'
+      select '15', from: 'event_end_date_3i'
+      select 'Fevereiro', from: 'event_end_date_2i'
+      select (Time.now.year + 2).to_s, from: 'event_end_date_1i'
+      click_button 'Enviar'
+
+      expect(page).to have_text 'Meus Eventos'
+      event_edited = Event.last.reload
+      expect(event_edited.name).to eql 'Evento editado' 
+      expect(event_edited.description).to eql 'descricao'
+      expect(event_edited.location).to eql 'local'
+      expect(event_edited.begin_date.strftime('%d/%m/%Y')).to eql '01/01/2018'
+      expect(event_edited.end_date.strftime('%d/%m/%Y')).to eql '15/02/2018'
     end
   end
 end
