@@ -47,6 +47,9 @@ describe 'User', type: :feature do
       visit '/'
       expect(page).to have_text 'Sugestões?'
 
+      click_button 'Enviar'
+      expect(page).to have_text 'Preencha seu nome, email e a sugestão que deseja enviar'
+
       fill_in 'suggestion_user_name', with: 'Bruce Wayne'
       fill_in 'suggestion_email', with: 'bruce@waynecorp.com'
       fill_in 'suggestion_description', with: 'Sugestão'

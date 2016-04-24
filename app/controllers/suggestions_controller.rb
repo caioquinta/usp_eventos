@@ -5,7 +5,7 @@ class SuggestionsController < ApplicationController
 
   def create
     @suggestion = Suggestion.new(suggestion_params)
-    flash[:notice] = 'Sugestão enviada com sucesso' if @suggestion.save
+    @suggestion.save ? (flash[:notice] = 'Sugestão enviada com sucesso') : flash[:alert] = 'Preencha seu nome, email e a sugestão que deseja enviar'
     redirect_to root_url
   end
 
