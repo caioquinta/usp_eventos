@@ -7,11 +7,11 @@
     = simple_form_for Suggestion.new, :method => :post do |f|
       = f.error_notification
       .col-md-4
-        = f.input :user_name, required: true, autofocus: true, placeholder: 'Nome', class: 'form-control'
+        = f.input :user_name, required: true, autofocus: true, placeholder: 'Nome', label: false, class: 'form-control'
       .col-md-4
-        = f.input :email, required: true, autofocus: true, placeholder: 'Email', class: 'form-control'
+        = f.input :email, required: true, autofocus: true, placeholder: 'Email', label: false, class: 'form-control'
       .col-md-12
-        = f.input :description, required: true, autofocus: true, placeholder: 'Mensagem...', :as => :text, input_html: { rows: 9 }, class: 'form-control'
+        = f.input :description, required: true, autofocus: true, placeholder: 'Mensagem...', label: false, :as => :text, input_html: { rows: 9 }, class: 'form-control'
       .col-md-4.col-md-offset-4
         %label
         = f.button :submit, "Enviar", class: 'btn btn-primary btn-block btn-lg'

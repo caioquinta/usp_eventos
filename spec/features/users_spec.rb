@@ -42,6 +42,21 @@ describe 'User', type: :feature do
       click_link 'Sair'
       expect(page).to have_text 'USP Eventos'
     end
+
+    it 'sends a suggestion', js: true do
+      visit '/'
+      expect(page).to have_text 'Sugestões?'
+
+      fill_in 'suggestion_user_name', with: 'Bruce Wayne'
+      fill_in 'suggestion_email', with: 'bruce@waynecorp.com'
+      fill_in 'suggestion_description', with: 'Sugestão'
+      click_button 'Enviar'
+      expect(page).to have_text 'Sugestão enviada com sucesso'
+      suggestion = Suggestion.last
+      expect(suggestion.user_name).to eql 'Bruce Wayne'
+      expect(suggestion.email).to eql 'bruce@waynecorp.com'
+      expect(suggestion.description).to eql 'Sugestão'
+    end
   end
 
   context 'with a signed user' do

@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   end
 
   root to: "users#index"
-  
+
   devise_for :users, :controllers => { registrations: 'registrations' }
+
+  resources :suggestions
 
   resources :events do
     member do
