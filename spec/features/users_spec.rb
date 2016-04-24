@@ -54,6 +54,9 @@ describe 'User', type: :feature do
       within('.inner') { click_link 'Entrar' }
       expect(page).to have_text 'Login'
 
+      click_button 'Entrar'
+      expect(page).to have_text 'E-mail ou senha inválidos.'
+
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: '12345678'
       click_button 'Entrar'
