@@ -25,6 +25,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event.destroy
+    redirect_to root_path
+  end
+
   def add_participant
     @event.participants.create(user_id: current_user.id)
   end
