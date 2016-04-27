@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_event, only: [:show, :edit, :add_participant, :remove_participant, :update, :destroy]
+  before_action :correct_planner, only: :edit
 
   def new
     @event = Event.new
@@ -36,6 +37,10 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def correct_planner
+    redirect_to root_path if @event.planner != current_user
   end
 
   def event_params
