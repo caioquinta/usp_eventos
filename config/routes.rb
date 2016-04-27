@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get 'add_participant'
       get 'remove_participant'
+      get 'successful'
     end
   end
 end

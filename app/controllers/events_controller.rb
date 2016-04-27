@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_event, only: [:show, :edit, :add_participant, :remove_participant, :update, :destroy]
-  before_action :correct_planner, only: :edit
+  before_action :correct_planner, only: [:edit, :destroy]
 
   def new
     @event = Event.new
@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params.merge(planner: current_user))
     if @event.save
       flash[:notice] = 'Evento Criado com Sucesso'
-      redirect_to root_url
+      render 'successful'
     else
       render 'new'
     end

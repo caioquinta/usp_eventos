@@ -102,6 +102,10 @@ describe 'User', type: :feature do
       select (Time.now.year + 1).to_s, from: 'event_end_date_1i'
       click_button 'Enviar'
 
+      expect(page).to have_text 'Evento Criado com sucesso!'
+      expect(page).to have_link 'Home'
+      click_link 'Home'
+
       created_event = Event.last
       expect(page).to have_text 'Próximos Eventos'
       expect(page).to have_css '.next_event_' + created_event.id.to_s, count: 2
