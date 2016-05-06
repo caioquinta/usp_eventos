@@ -19,6 +19,7 @@ describe 'User', type: :feature do
       fill_in 'user_password', with: '12345678'
       fill_in 'user_password_confirmation', with: '12345678'
       click_button 'Cadastrar'
+      expect(page).to have_text 'Cadastro efetuado com sucesso.'
       expect(page).to have_link 'Meus Dados'
       expect(page).to have_link 'Sair'
       user = User.last
@@ -45,7 +46,7 @@ describe 'User', type: :feature do
 
     it 'sends a suggestion', js: true do
       visit '/'
-      expect(page).to have_text 'Sugestões?'
+      expect(page).to have_button 'Enviar'
 
       click_button 'Enviar'
       expect(page).to have_text 'Preencha seu nome, email e a sugestão que deseja enviar'
