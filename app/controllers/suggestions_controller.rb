@@ -1,8 +1,4 @@
 class SuggestionsController < ApplicationController
-  def new
-    @suggestion = Suggestion.new
-  end
-
   def create
     @suggestion = Suggestion.new(suggestion_params)
     @suggestion.save ? (flash[:notice] = 'Sugestão enviada com sucesso') : flash[:alert] = 'Preencha seu nome, email e a sugestão que deseja enviar'

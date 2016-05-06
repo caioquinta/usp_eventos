@@ -22,7 +22,7 @@
     #bs-navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
         %li
-          = link_to 'Sugestões', ''
+          = link_to 'Sugestões', new_suggestion_path
         - if user_signed_in?
           %li
             = link_to 'Novo Evento', new_event_path
