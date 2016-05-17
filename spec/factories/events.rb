@@ -9,5 +9,9 @@ FactoryGirl.define do
       begin_date 1.day.from_now
       end_date 10.day.from_now
     end
+    factory :current_event do
+      begin_date 1.day.ago
+      end_date 10.day.from_now
+    end
   end
 end
