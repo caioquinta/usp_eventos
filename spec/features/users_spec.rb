@@ -43,6 +43,38 @@ describe 'User', type: :feature do
       expect(page).to have_text 'USP Eventos'
     end
 
+    it 'signs up with facebook', js: true do
+      Rails.application.env_config['devise.mapping'] = Devise.mappings[:user] # If using Devise
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
+        provider: 'facebook',
+        uid: '123545',
+        info: {
+          name: 'Tony Stark',
+          email: 'test@facebook.com'
+        },
+        credentials: {
+          token: '123456',
+          expires_at: 10.day.from_now
+        }
+      )
+
+      visit '/'
+      expect(page).to have_link 'Cadastrar', count: 2
+
+      within('.inner') { click_link 'Cadastrar' }
+      expect(page).to have_link 'Entrar com Facebook'
+
+      click_link 'Entrar com Facebook'
+      expect(page).to have_text 'Autenticado com sucesso com uma conta de Facebook.'
+      facebook_user = User.last
+      expect(facebook_user.name).to eql 'Tony Stark'
+      expect(facebook_user.email).to eql 'test@facebook.com'
+
+      click_link 'Sair'
+      expect(page).to have_text 'USP Eventos'
+    end
+
     it 'sends a suggestion', js: true do
       visit '/'
       expect(page).to have_button 'Enviar'
