@@ -9,7 +9,6 @@
         = f.input :email, required: true, autofocus: true
         = f.input :password, autocomplete: "off", hint: "Deixe em branco para manter a senha atual", required: false
         = f.input :password_confirmation, required: false
-        = f.input :current_password, hint: "Digite sua senha atual para confirmar as mudanças", required: true
       .form-actions
         = f.button :submit, "Atualizar"
     = link_to "Voltar", :back

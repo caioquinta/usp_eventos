@@ -31,10 +31,6 @@ describe 'User', type: :feature do
 
       fill_in 'user_name', with: 'Robin'
       find('.btn.btn-default').trigger('click')
-      expect(page).to have_text 'Digite sua senha atual para confirmar as mudanças'
-
-      fill_in 'user_current_password', with: '12345678'
-      find('.btn.btn-default').trigger('click')
       expect(page).to have_text 'Próximos Eventos'
       user.reload
       expect(user.name).to eql 'Robin'
