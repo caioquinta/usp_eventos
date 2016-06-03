@@ -6,10 +6,16 @@
         %h2= @event.name
       .col-lg-4
         De
-        = @event.begin_date.strftime('%d/%m/%Y') if !@event.begin_date.nil?
+        - if !@event.begin_date.nil?
+          = @event.begin_date.strftime('%d/%m/%Y')
+          às
+          = @event.begin_date.strftime('%H:%M')
       .col-lg-8
         Até
-        = @event.end_date.strftime('%d/%m/%Y') if !@event.end_date.nil?
+        - if !@event.end_date.nil?
+          = @event.end_date.strftime('%d/%m/%Y')
+          às
+          = @event.end_date.strftime('%H:%M')
       .col-lg-4
         %h3 Preço:
         .ion-social-usd= @event.price
@@ -23,3 +29,6 @@
       .col-lg-12
         %h3 Descrição:
         = @event.description
+      .col-lg-12.social-likes
+        .facebook{'data-title': @event.name, 'data-url': event_url(@event.id).sub(/^http?\:\/\//,'')} Facebook
+        .twitter{'data-title': @event.name + ' #uspeventos', 'data-url': event_url(@event.id)} Twitter

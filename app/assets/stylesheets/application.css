@@ -15,4 +15,5 @@
  *= require_tree .
  *= require_self
  *= require styles
+ *= require social-likes_flat
  */

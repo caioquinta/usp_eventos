@@ -16,6 +16,9 @@
     .col-lg-4.col-sm-6
       = link_to '+Info', event_path(event.id), class: 'btn btn-success'
     .col-lg-8.col-sm-6.status= render 'users/event_box_buttons', event: event
+    .col-lg-12.social-likes
+      .facebook{'data-title': event.name, 'data-url': event_url(event.id).sub(/^http?\:\/\//,'')} Facebook
+      .twitter{'data-title': event.name + ' #uspeventos', 'data-url': event_url(event.id)} Twitter
     .col-lg-5.col-lg-offset-7.col-sm-12
       - if event.planner == current_user
         = link_to '', edit_event_path(event.id), class: 'btn btn-primary ion-edit'
