@@ -6,7 +6,7 @@
     .col-lg-12.col-sm-12.local
       Local:
       = event.location
-    .col-lg-12
+    .col-lg-12.dates
       .col-lg-6.col-sm-12
         De
         = event.begin_date.strftime('%d/%m/%Y')
@@ -17,7 +17,7 @@
       = link_to '+Info', event_path(event.id), class: 'btn btn-success'
     .col-lg-8.col-sm-6.status= render 'users/event_box_buttons', event: event
     .col-lg-7.col-sm-7{ class: "social-share-btn-#{event.id}"}
-    .col-lg-5.col-sm-5
+    .col-lg-5.col-sm-5  
     - if event.planner == current_user
       = link_to '', edit_event_path(event.id), class: 'btn btn-primary ion-edit'
       = link_to '', event_path(event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
