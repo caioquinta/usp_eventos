@@ -29678,22 +29678,15 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
         /* always close responsive nav after click */
         $('.navbar-toggle:visible').click();
     });
-
 })(jQuery);
-(function() {
-  $(function() {
-    return $('.new_event_begin_date').datepicker({
-      dateFormat: 'dd/mm/yy'
-    });
-  });
-
-  $(function() {
-    return $('.new_event_end_date').datepicker({
-      dateFormat: 'dd/mm/yy'
-    });
-  });
-
-}).call(this);
+$(window).scroll(function() {
+    var winScrollTop = $(window).scrollTop();
+    var winHeight = $(window).height();
+    var floaterHeight = $('.event-floater-btn').outerHeight(true);
+    var fromBottom = 20;
+    var top = winScrollTop + winHeight - floaterHeight - fromBottom;
+	$('.event-floater-btn').css({'top': top + 'px'});
+});
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -29712,4 +29705,6 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
 
 
+
+//= social-likes.min
 

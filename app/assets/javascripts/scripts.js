@@ -26,5 +26,4 @@
         /* always close responsive nav after click */
         $('.navbar-toggle:visible').click();
     });
-
 })(jQuery);
