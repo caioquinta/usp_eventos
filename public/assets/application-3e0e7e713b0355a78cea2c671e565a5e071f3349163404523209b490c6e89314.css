@@ -1554,359 +1554,6 @@ body .ui-tooltip {
 
  */
 
-.social-likes {
-    display: inline-block
-}
-.social-likes,
-.social-likes__widget {
-    padding: 0;
-    vertical-align: middle!important;
-    word-spacing: 0!important;
-    text-indent: 0!important;
-    list-style: none!important
-}
-.social-likes {
-    opacity: 0
-}
-.social-likes_visible {
-    opacity: 1;
-    transition: opacity .1s ease-in
-}
-.social-likes>* {
-    display: inline-block;
-    visibility: hidden
-}
-.social-likes_vertical>* {
-    display: block
-}
-.social-likes_visible>* {
-    visibility: inherit
-}
-.social-likes__widget {
-    display: inline-block;
-    position: relative;
-    white-space: nowrap;
-    border-radius: 290px;
-}
-.social-likes__widget:before,
-.social-likes__widget:after {
-    display: none!important
-}
-.social-likes_vertical .social-likes__widget {
-    float: left;
-    clear: left
-}
-.social-likes__button,
-.social-likes__icon,
-.social-likes__counter {
-    text-decoration: none;
-    text-rendering: optimizeLegibility
-}
-.social-likes__button {
-    display: inline-block;
-    margin: 0;
-    outline: 0
-}
-.social-likes__counter {
-    margin: 0;
-    outline: 0
-}
-.social-likes__button {
-    position: relative;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none
-}
-.social-likes__button:before {
-    content: "";
-    display: inline-block
-}
-.social-likes__icon {
-    position: absolute
-}
-.social-likes__counter {
-    display: none;
-    position: relative
-}
-.social-likes_ready .social-likes__counter,
-.social-likes__counter_single {
-    display: inline-block
-}
-.social-likes_ready .social-likes__counter_empty {
-    display: none
-}
-.social-likes_vertical .social-likes__widget {
-    display: block
-}
-.social-likes_notext .social-likes__button {
-    padding-left: 0
-}
-.social-likes_single-w {
-    position: relative;
-    display: inline-block
-}
-.social-likes_single {
-    position: absolute;
-    text-align: left;
-    z-index: 99999;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s .11s, opacity .1s ease-in;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden
-}
-.social-likes_single.social-likes_opened {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .15s ease-out
-}
-.social-likes__button_single {
-    position: relative
-}
-@font-face {
-    font-family: "social-likes";
-    src: url("data:application/x-font-woff;charset=utf-8;base64,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") format("woff");
-    font-weight: 400;
-    font-style: normal
-}
-.social-likes__icon_facebook:before {
-    content: "\f101";
-}
-.social-likes__icon_github:before {
-    content: "\f102"
-}
-.social-likes__icon_mailru:before {
-    content: "\f103"
-}
-.social-likes__icon_odnoklassniki:before {
-    content: "\f104"
-}
-.social-likes__icon_pinterest:before {
-    content: "\f105"
-}
-.social-likes__icon_plusone:before {
-    content: "\f106"
-}
-.social-likes__icon_single:before {
-    content: "\f107"
-}
-.social-likes__icon_twitter:before {
-    content: "\f108"
-}
-.social-likes__icon_vkontakte:before {
-    content: "\f109"
-}
-.social-likes {
-    min-height: 36px;
-    margin: -.5em;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0)
-}
-.social-likes,
-.social-likes_single-w {
-    line-height: 1.5
-}
-.social-likes,
-.social-likes__widget_single {
-    font-size: 14px
-}
-.social-likes__widget {
-    margin: .5em;
-    line-height: 1.5;
-    border: 0;
-    text-align: left;
-    cursor: pointer
-}
-.social-likes__button,
-.social-likes__counter {
-    box-sizing: border-box;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    vertical-align: baseline;
-    color: #fff
-}
-.social-likes__button {
-    padding: .04em .7em .18em 1.65em;
-    font-weight: 700;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
-}
-.social-likes__icon {
-    top: 0;
-    left: .21em;
-    font-family: "social-likes";
-    font-weight: 400;
-    font-style: normal;
-    speak: none;
-    text-transform: none;
-    font-size: 1.15em;
-    vertical-align: baseline
-}
-.social-likes__counter {
-    padding-right: .5em;
-    font-weight: 400;
-    font-size: .85em
-}
-.social-likes_vertical .social-likes__widget {
-    min-width: 13em
-}
-.social-likes_vertical .social-likes__counter {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: .3em
-}
-.social-likes_light .social-likes__widget {
-    min-width: 0;
-    background: 0 0
-}
-.social-likes_light .social-likes__button,
-.social-likes_single-light+.social-likes__button {
-    min-width: 0;
-    padding-left: 1.35em;
-    font-weight: 400;
-    text-decoration: underline;
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto
-}
-.social-likes_light .social-likes__icon {
-    margin-top: -.1em;
-    margin-left: -.25em
-}
-.social-likes_light .social-likes__counter,
-.social-likes_single-light+.social-likes__button+.social-likes__counter {
-    position: static;
-    margin-top: 0;
-    color: #999
-}
-.social-likes_notext .social-likes__button {
-    width: 1.85em
-}
-.social-likes_notext .social-likes__icon {
-    margin-left: .1em
-}
-.social-likes_notext.social-likes_light,
-.social-likes_notext.social-likes_light .social-likes__widget,
-.social-likes_notext.social-likes_light .social-likes__icon {
-    margin: 0;
-    left: 0
-}
-.social-likes_notext.social-likes_light .social-likes__button {
-    width: 1.4em;
-    padding-left: 0
-}
-.social-likes_single {
-    margin-top: -1.2em;
-    padding: .5em;
-    background: #fff;
-    border: 1px solid #ddd
-}
-.social-likes__widget_single {
-    height: 1.7em;
-    margin: 0;
-    padding: .1em 0;
-    line-height: 1.5;
-    background: #007aff
-}
-.social-likes_single-light+.social-likes__widget_single {
-    color: #007aff
-}
-.social-likes__icon_single {
-    left: .4em;
-    font-size: 1.1em
-}
-.social-likes__widget_facebook {
-    background: #3d5b95
-}
-.social-likes_light .social-likes__button_facebook {
-    color: #3d5b95
-}
-.social-likes__icon_facebook {
-    left: .25em;
-    top: .05em;
-    font-size: 1.1em
-}
-.social-likes_notext .social-likes__icon_facebook {
-    margin-left: .15em
-}
-.social-likes__widget_twitter {
-    background: #24aadd
-}
-.social-likes_light .social-likes__button_twitter {
-    color: #24aadd
-}
-.social-likes__icon_twitter {
-    top: .1em;
-    left: .25em
-}
-.social-likes_light .social-likes__icon_twitter {
-    left: .1em
-}
-.social-likes__widget_plusone {
-    background: #d23e30
-}
-.social-likes_light .social-likes__button_plusone {
-    color: #d23e30
-}
-.social-likes_notext .social-likes__icon_plusone {
-    margin-left: 0
-}
-.social-likes__icon_plusone {
-    left: .25em
-}
-.social-likes_light .social-likes__icon_plusone {
-    margin-top: 0
-}
-.social-likes__widget_mailru {
-    background: #00468c
-}
-.social-likes_light .social-likes__button_mailru {
-    color: #00468c
-}
-.social-likes__icon_mailru {
-    left: .25em
-}
-.social-likes_light .social-likes__icon_mailru {
-    left: .1em
-}
-.social-likes_notext .social-likes__icon_mailru {
-    margin-left: .075em
-}
-.social-likes__widget_vkontakte {
-    background: #587e9f
-}
-.social-likes_light .social-likes__button_vkontakte {
-    color: #587e9f
-}
-.social-likes__icon_vkontakte {
-    top: .2em;
-    left: .25em
-}
-.social-likes__widget_odnoklassniki {
-    background: #f59310
-}
-.social-likes_light .social-likes__button_odnoklassniki {
-    color: #f59310
-}
-.social-likes__icon_odnoklassniki {
-    left: .4em
-}
-.social-likes_light .social-likes__icon_odnoklassniki {
-    left: .25em
-}
-.social-likes_notext.social-likes_light .social-likes__button_odnoklassniki {
-    width: 1em
-}
-.social-likes__widget_pinterest {
-    background: #cb132d
-}
-.social-likes_light .social-likes__button_pinterest {
-    color: #cb132d
-}
-.social-likes_light .social-likes__icon_pinterest {
-    left: .1em
-}
 /*
  *Landing Zero theme - A free landing page theme from BootstrapZero
  *http://www.bootstrapzero.com */
@@ -1918,33 +1565,39 @@ html, body {
   height: 100%;
 }
 
-/* line 15, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 16, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+.jssocials-share-link {
+  font-size: 12px;
+  border-radius: 50%;
+}
+
+/* line 20, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .center {
   text-align: center;
 }
 
-/* line 18, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 23, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .signin_wrapper, .signup_wrapper, .edit_wrapper, .home_wrapper, .event_wrapper {
   font-size: 18px;
   margin-top: 9%;
   margin-bottom: 9%;
 }
-/* line 22, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 27, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .signin_wrapper form .form-actions, .signup_wrapper form .form-actions, .edit_wrapper form .form-actions, .home_wrapper form .form-actions, .event_wrapper form .form-actions {
   text-align: center;
 }
-/* line 24, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 29, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .signin_wrapper .ion-social-facebook:before, .signin_wrapper .ion-person-add:before, .signin_wrapper .ion-android-cancel:before, .signin_wrapper .ion-person-stalker:before, .signin_wrapper .ion-ios-location:before, .signin_wrapper .ion-social-usd:before, .signup_wrapper .ion-social-facebook:before, .signup_wrapper .ion-person-add:before, .signup_wrapper .ion-android-cancel:before, .signup_wrapper .ion-person-stalker:before, .signup_wrapper .ion-ios-location:before, .signup_wrapper .ion-social-usd:before, .edit_wrapper .ion-social-facebook:before, .edit_wrapper .ion-person-add:before, .edit_wrapper .ion-android-cancel:before, .edit_wrapper .ion-person-stalker:before, .edit_wrapper .ion-ios-location:before, .edit_wrapper .ion-social-usd:before, .home_wrapper .ion-social-facebook:before, .home_wrapper .ion-person-add:before, .home_wrapper .ion-android-cancel:before, .home_wrapper .ion-person-stalker:before, .home_wrapper .ion-ios-location:before, .home_wrapper .ion-social-usd:before, .event_wrapper .ion-social-facebook:before, .event_wrapper .ion-person-add:before, .event_wrapper .ion-android-cancel:before, .event_wrapper .ion-person-stalker:before, .event_wrapper .ion-ios-location:before, .event_wrapper .ion-social-usd:before {
   padding-right: 5px;
   font-size: 16px;
 }
-/* line 27, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 32, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .signin_wrapper .panel-default, .signup_wrapper .panel-default, .edit_wrapper .panel-default, .home_wrapper .panel-default, .event_wrapper .panel-default {
   background-color: transparent;
   min-height: 40%;
 }
 
-/* line 31, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 36, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .notice {
   background-color: #0E95AB;
   font-size: 18px;
@@ -1952,29 +1605,48 @@ html, body {
   -webkit-animation-name: flash;
 }
 
-/* line 37, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 42, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .alert.flash {
   background-color: red;
   margin-bottom: 0px;
 }
 
-/* line 41, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 46, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .event_box {
   text-align: center;
   font-size: 14px;
   margin-bottom: 1%;
+  padding-top: 5px;
 }
-/* line 45, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 51, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .event_box .name {
   text-align: left;
+  -webkit-line-clamp: 1;
+  max-height: 32px;
+  min-height: 32px;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
-/* line 48, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 59, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+.event_box .name p {
+  line-height: 1;
+}
+/* line 61, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+.event_box .local {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  max-height: 40px;
+  min-height: 40px;
+  overflow: hidden;
+}
+/* line 68, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .event_box .btn {
   margin-bottom: 10%;
 }
 
-/* line 51, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 71, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .facebook-btn {
   border-color: #3B5998;
   border-bottom-color: #263a63;
@@ -1983,7 +1655,7 @@ html, body {
   font-size: 16px;
 }
 
-/* line 58, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 78, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .event-floater-btn {
   position: absolute;
   top: 30%;
@@ -2003,13 +1675,13 @@ html, body {
   text-align: center;
 }
 
-/* line 76, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 96, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .ion-document:before {
   font-size: 64px;
   display: block;
 }
 
-/* line 80, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 100, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 body {
   font-family: "Questrial", "Helvetica Neue", Arial, sans-serif;
   background-color: #36333d;
@@ -2017,7 +1689,7 @@ body {
   webkit-tap-highlight-color: #222;
 }
 
-/* line 86, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 106, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 hr {
   max-width: 80px;
   border-width: 3px;
@@ -2025,95 +1697,95 @@ hr {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-/* line 92, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 112, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 hr.light {
   border-color: #fff;
 }
 
-/* line 95, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 115, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 a {
   color: #0E95AB;
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
 }
-/* line 100, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 120, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 a:hover, a:focus {
   color: #0E95AB;
   outline: 0;
 }
 
-/* line 104, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 124, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Questrial", "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 107, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 127, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 p {
   font-size: 17px;
   line-height: 1.7;
   margin-bottom: 20px;
 }
 
-/* line 112, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 132, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .wide-space {
   letter-spacing: 1.6px;
 }
 
-/* line 115, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 135, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .icon-lg {
   font-size: 50px;
   line-height: 18px;
 }
 
-/* line 119, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 139, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .bg-primary {
   background-color: #333;
 }
 
-/* line 122, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 142, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .bg-dark {
   color: #eee;
   background-color: #222;
 }
 
-/* line 126, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 146, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .cursive {
   font-family: "Dancing Script", cursive;
   text-transform: none;
 }
 
-/* line 130, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 150, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .text-faded {
   color: rgba(245, 245, 245, 0.7);
 }
 
-/* line 133, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 153, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .text-dark {
   color: #111;
 }
 
-/* line 136, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 156, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .text-primary {
   color: #9c27b0;
 }
 
-/* line 139, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 159, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .modal-content {
   background-color: #1d1d1d;
 }
 
-/* line 142, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 162, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 section {
   padding: 70px 0;
 }
 
-/* line 145, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 165, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 aside {
   padding: 50px 0;
 }
 
-/* line 148, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 168, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 footer {
   position: fixed;
   left: 0px;
@@ -2123,12 +1795,12 @@ footer {
   padding: 15px;
 }
 
-/* line 156, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 176, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .no-padding {
   padding: 0;
 }
 
-/* line 159, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 179, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default {
   border-color: rgba(35, 35, 35, 0.05);
   font-family: "Questrial", "Helvetica Neue", Arial, sans-serif;
@@ -2139,7 +1811,7 @@ footer {
   transition: all 0.4s;
 }
 
-/* line 168, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 188, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-header > .navbar-brand {
   font-family: "Questrial", "Helvetica Neue", Arial, sans-serif;
   padding: 15px;
@@ -2147,123 +1819,123 @@ footer {
   -moz-transition: padding 0.2s ease-in;
   transition: padding 0.2s ease-in;
 }
-/* line 174, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 194, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-header > .navbar-brand:hover, .navbar-header > .navbar-brand:focus {
   color: #0E95AB;
 }
 
-/* line 178, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 198, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .navbar-toggle {
   border-color: transparent;
 }
-/* line 179, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 199, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
   background-color: #0E95AB;
 }
-/* line 182, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 202, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .navbar-collapse {
   border-color: transparent;
 }
-/* line 185, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 205, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .nav > li > a {
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
   color: #eee;
 }
-/* line 190, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 210, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .nav > li > a:focus {
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
   color: #eee;
 }
-/* line 195, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 215, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus:hover {
   color: #0E95AB;
 }
-/* line 197, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 217, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .nav > li.active > a {
   color: #0E95AB !important;
   background-color: transparent;
 }
-/* line 200, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 220, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .nav > li.active > a:focus {
   color: #0E95AB !important;
   background-color: transparent;
 }
-/* line 203, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 223, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .navbar-default .nav > li.active > a:hover, .navbar-default .nav > li.active > a:focus:hover {
   background-color: transparent;
 }
 
 @media (min-width: 768px) {
-  /* line 207, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 227, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default {
     border-color: transparent;
     min-height: 60px;
   }
 
-  /* line 210, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 230, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-header > .navbar-brand {
     color: rgba(255, 255, 255, 0.7);
     padding: 19px;
   }
 
-  /* line 215, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 235, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default .navbar-header .navbar-brand:hover, .navbar-default .navbar-header .navbar-brand:focus {
     color: #f4f4f4;
   }
-  /* line 217, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 237, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default .nav > li > a {
     color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     letter-spacing: 1.1px;
     text-shadow: 1px 1px 1px rgba(60, 60, 60, 0.7);
   }
-  /* line 222, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 242, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default .nav > li > a:focus {
     color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     letter-spacing: 1.1px;
     text-shadow: 1px 1px 1px rgba(60, 60, 60, 0.7);
   }
-  /* line 227, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 247, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus:hover {
     color: #fefefe;
   }
-  /* line 229, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 249, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default.affix {
     border-color: rgba(34, 34, 34, 0.05);
     background-color: #222;
   }
-  /* line 232, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 252, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default.affix .navbar-header .navbar-brand {
     font-size: 15px;
     color: #9c27b0;
     padding: 20px;
     letter-spacing: 1px;
   }
-  /* line 237, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 257, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default.affix .navbar-header .navbar-brand:hover, .navbar-default.affix .navbar-header .navbar-brand:focus {
     color: #8b27b0;
   }
-  /* line 239, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 259, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default.affix .nav > li > a {
     color: #ddd;
     text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.7);
   }
-  /* line 242, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 262, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default.affix .nav > li > a:focus {
     color: #ddd;
     text-shadow: 1px 1px 1px rgba(30, 30, 30, 0.7);
   }
-  /* line 245, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 265, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .navbar-default.affix .nav > li > a:hover, .navbar-default.affix .nav > li > a:focus:hover {
     color: #0E95AB;
   }
 }
-/* line 248, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 268, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 header {
   position: relative;
   min-height: auto;
@@ -2278,7 +1950,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
 }
-/* line 261, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 281, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 header .header-content {
   position: relative;
   width: 100%;
@@ -2286,13 +1958,13 @@ header .header-content {
   text-align: center;
   z-index: 2;
 }
-/* line 268, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 288, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 header .header-content .inner h1 {
   margin-top: 0;
   margin-bottom: 0;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-/* line 272, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 292, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 header .header-content .inner p {
   margin-bottom: 50px;
   font-size: 16px;
@@ -2300,7 +1972,7 @@ header .header-content .inner p {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* line 278, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 298, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 #video-background {
   position: absolute;
   right: 0;
@@ -2311,27 +1983,27 @@ header .header-content .inner p {
   height: auto;
   z-index: 1;
 }
-/* line 287, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 307, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 #video-background.collapsing {
   display: none;
 }
 
-/* line 290, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 310, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 footer {
   background-color: #2d2d2d;
 }
 
 @media (min-width: 768px) {
-  /* line 294, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 314, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .icon-lg {
     font-size: 80px;
   }
 
-  /* line 296, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 316, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   header {
     min-height: 100%;
   }
-  /* line 298, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 318, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   header .header-content {
     position: absolute;
     top: 50%;
@@ -2340,17 +2012,17 @@ footer {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
-  /* line 305, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 325, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   header .header-content .inner {
     margin-right: auto;
     margin-left: auto;
     max-width: 1000px;
   }
-  /* line 309, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 329, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   header .header-content .inner h1 {
     font-size: 53px;
   }
-  /* line 311, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 331, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   header .header-content .inner p {
     margin-right: auto;
     margin-left: auto;
@@ -2358,13 +2030,13 @@ footer {
     font-size: 18px;
   }
 
-  /* line 316, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 336, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   section {
     min-height: 600px;
     padding: 100px 0;
   }
 }
-/* line 320, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 340, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .form-control {
   display: block;
   width: 100%;
@@ -2380,45 +2052,45 @@ footer {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-/* line 334, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 354, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .form-control:focus {
   color: #222;
   background-color: #ccc;
   box-shadow: none;
 }
 
-/* line 339, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 359, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 textarea {
   resize: none;
 }
 
-/* line 342, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 362, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .margin-top-0 {
   margin-top: 0;
 }
 
-/* line 345, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 365, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .feature {
   margin: 50px auto 0;
   max-width: 400px;
 }
-/* line 348, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 368, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .feature p {
   margin-bottom: 0;
 }
 
 @media (min-width: 992px) {
-  /* line 352, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+  /* line 372, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
   .feature {
     margin: 20px auto 0;
   }
 }
-/* line 355, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 375, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .call-to-action h2 {
   margin: 0 auto 20px;
 }
 
-/* line 358, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 378, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .gallery-box {
   display: block;
   position: relative;
@@ -2426,7 +2098,7 @@ textarea {
   max-width: 650px;
   overflow: hidden;
 }
-/* line 364, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 384, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .gallery-box .gallery-box-caption {
   display: block;
   position: absolute;
@@ -2441,7 +2113,7 @@ textarea {
   -moz-transition: all 0.35s;
   transition: all 0.35s;
 }
-/* line 377, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 397, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .gallery-box .gallery-box-caption .gallery-box-content {
   position: absolute;
   top: 50%;
@@ -2449,29 +2121,29 @@ textarea {
   text-align: center;
   transform: translateY(-50%);
 }
-/* line 384, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 404, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .gallery-box:hover .gallery-box-caption {
   opacity: 1;
 }
-/* line 386, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 406, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .gallery-box:hover img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 390, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 410, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .gallery-box img {
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
 
-/* line 394, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 414, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .no-gutter > [class*=col-] {
   padding-right: 0;
   padding-left: 0;
 }
 
-/* line 398, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 418, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default {
   border-color: #fff;
   color: #222;
@@ -2480,7 +2152,7 @@ textarea {
   -moz-transition: all 0.35s;
   transition: all 0.35s;
 }
-/* line 405, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 425, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active {
   border-color: #ededed;
   color: #222;
@@ -2488,7 +2160,7 @@ textarea {
   opacity: 0.7;
 }
 
-/* line 411, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 431, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .open > .dropdown-toggle.btn-default {
   border-color: #ededed;
   color: #222;
@@ -2496,113 +2168,113 @@ textarea {
   opacity: 0.7;
 }
 
-/* line 418, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 438, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default:active, .btn-default.active {
   background-image: none;
 }
 
-/* line 421, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 441, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .open > .dropdown-toggle.btn-default {
   background-image: none;
 }
 
-/* line 425, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 445, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default.disabled, .btn-default[disabled] {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 430, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 450, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 fieldset[disabled] .btn-default {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 436, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 456, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default.disabled:hover, .btn-default[disabled]:hover {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 441, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 461, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 fieldset[disabled] .btn-default:hover {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 447, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 467, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default.disabled:focus, .btn-default[disabled]:focus {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 452, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 472, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 fieldset[disabled] .btn-default:focus {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 458, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 478, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default.disabled.focus, .btn-default[disabled].focus {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 463, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 483, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 fieldset[disabled] .btn-default.focus {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 469, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 489, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default.disabled:active, .btn-default[disabled]:active {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 474, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 494, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 fieldset[disabled] .btn-default:active {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 480, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 500, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default.disabled.active, .btn-default[disabled].active {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 485, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 505, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 fieldset[disabled] .btn-default.active {
   border-color: #fff;
   background-color: #fff;
   opacity: 0.7;
 }
 
-/* line 490, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 510, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-default .badge {
   color: #fff;
   background-color: #222;
 }
 
-/* line 494, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 514, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn {
   border: 0;
   border-radius: 290px;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
-/* line 495, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 515, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn.btn-primary {
   background-color: transparent;
   border: 1px solid #f0f0f0;
@@ -2611,25 +2283,25 @@ fieldset[disabled] .btn-default.active {
   -moz-transition: all 0.35s;
   transition: all 0.35s;
 }
-/* line 502, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 522, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn.btn-primary:hover {
   opacity: 0.7;
 }
 
-/* line 508, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 528, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 .btn-xl {
   padding: 15px 30px;
   font-size: 20px;
 }
 
-/* line 512, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 532, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 ::-moz-selection, ::selection {
   text-shadow: none;
   color: #fff;
   background: #222;
 }
 
-/* line 518, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
+/* line 538, /home/caio/usp_eventos/usp_eventos/app/assets/stylesheets/styles.sass */
 img::selection, img::-moz-selection {
   color: #fff;
   background: 0 0;
@@ -2651,6 +2323,4 @@ img::selection, img::-moz-selection {
 
 
 
-
  */
-
