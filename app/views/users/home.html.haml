@@ -17,4 +17,3 @@
   .col-lg-12
     - next_events.each do |event|
       .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event 
-        
