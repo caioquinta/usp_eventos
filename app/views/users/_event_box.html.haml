@@ -16,10 +16,20 @@
     .col-lg-4.col-sm-6
       = link_to '+Info', event_path(event.id), class: 'btn btn-success'
     .col-lg-8.col-sm-6.status= render 'users/event_box_buttons', event: event
-    .col-lg-12.social-likes
-      .facebook{'data-title': event.name, 'data-url': event_url(event.id).sub(/^http?\:\/\//,'')} Facebook
-      .twitter{'data-title': event.name + ' #uspeventos', 'data-url': event_url(event.id)} Twitter
+    .col-lg-12{ class: "social-share-btn-#{event.id}"}
     .col-lg-5.col-lg-offset-7.col-sm-12
-      - if event.planner == current_user
-        = link_to '', edit_event_path(event.id), class: 'btn btn-primary ion-edit'
-        = link_to '', event_path(event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
+    - if event.planner == current_user
+      = link_to '', edit_event_path(event.id), class: 'btn btn-primary ion-edit'
+      = link_to '', event_path(event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
+
+:javascript
+  $(".social-share-btn-#{event.id}").jsSocials({
+    url: '#{event_url(event.id)}',  
+    showLabel: false,
+    showCount: false,
+    shareIn: 'popup',
+    text: '#{event.name}',
+    shares: [
+        { share: 'twitter', hashtags: 'uspeventos' }
+        , 'facebook', 'whatsapp']
+  });

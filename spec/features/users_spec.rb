@@ -108,8 +108,6 @@ describe 'User', type: :feature do
       click_button 'Entrar'
       expect(page).to have_link 'Novo Evento', count: 2
       expect(page).to have_css '.thumbnail_event_' + Event.last.id.to_s
-      expect(page).to have_css '.social-likes__widget_facebook'
-      expect(page).to have_css '.social-likes__widget_twitter'
       expect(page).to have_text 'De ' + Event.last.begin_date.strftime('%d/%m/%Y')
       expect(page).to have_text 'Até ' + Event.last.end_date.strftime('%d/%m/%Y')
 

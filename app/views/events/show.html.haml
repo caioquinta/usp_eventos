@@ -29,6 +29,3 @@
       .col-lg-12
         %h3 Descrição:
         = @event.description
-      .col-lg-12.social-likes
-        .facebook{'data-title': @event.name, 'data-url': event_url(@event.id).sub(/^http?\:\/\//,'')} Facebook
-        .twitter{'data-title': @event.name + ' #uspeventos', 'data-url': event_url(@event.id)} Twitter
