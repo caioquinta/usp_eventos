@@ -28,4 +28,4 @@
         .col-lg-9.status= render 'users/event_box_buttons', event: @event 
       .col-lg-12
         %h3 Descrição:
-        = @event.description
+        = simple_format @event.description
