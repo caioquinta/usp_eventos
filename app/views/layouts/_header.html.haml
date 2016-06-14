@@ -22,6 +22,8 @@
     #bs-navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
         %li
+          = link_to 'Sobre', about_path
+        %li
           = link_to 'Sugestões', new_suggestion_path
         - if user_signed_in?
           %li
