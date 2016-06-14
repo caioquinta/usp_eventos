@@ -1,1 +1,6 @@
-$('.thumbnail_event_<%=@event.id %> .status').html("<%= escape_javascript(render partial: 'users/event_box_buttons',  locals: { event: @event } ).html_safe %>");
+if ('<%= user_signed_in? %>' == 'true'){
+	$('.thumbnail_event_<%=@event.id %> .status').html("<%= escape_javascript(render partial: 'users/event_box_buttons',  locals: { event: @event } ).html_safe %>");
+}
+else {
+	$('.thumbnail_event_<%=@event.id %> .status').html("<%= escape_javascript(link_to 'Faça login primeiro', new_user_session_path, class: 'btn btn-default' ) %>");
+}

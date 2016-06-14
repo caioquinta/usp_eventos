@@ -88,6 +88,26 @@ describe 'User', type: :feature do
       expect(suggestion.email).to eql 'bruce@waynecorp.com'
       expect(suggestion.description).to eql 'Sugestão'
     end
+
+    it 'visits users home and selects an event', js: true do
+      next_event = create :next_event
+
+      visit '/home'
+      expect(page).to have_css '.thumbnail_event_' + next_event.id.to_s
+      expect(page).to have_link '+Info'
+      expect(page).to have_link 'Me interessa!'
+
+      first(:link, 'Me interessa!').click
+      expect(page).to have_link 'Faça login primeiro'
+
+      click_link '+Info'
+      expect(page).to have_text next_event.name
+      expect(page).to have_text next_event.location
+      expect(page).to have_text next_event.description
+      expect(page).to have_text next_event.participants.count
+      expect(page).to have_text next_event.begin_date.strftime('%d/%m/%Y às %H:%M')
+      expect(page).to have_text next_event.end_date.strftime('%d/%m/%Y às %H:%M')
+    end
   end
 
   context 'with a signed user' do
@@ -180,6 +200,8 @@ describe 'User', type: :feature do
       expect(page).to have_text created_event.description
       expect(page).to have_text created_event.participants.count
       expect(page).to have_text created_event.price
+      expect(page).to have_text created_event.begin_date.strftime('%d/%m/%Y às %H:%M')
+      expect(page).to have_text created_event.end_date.strftime('%d/%m/%Y às %H:%M')
 
       current_event = create :current_event
       click_link 'Voltar'

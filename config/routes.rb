@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root 'users#home', as: :authenticated_root
   end
+  get 'home', to: 'users#home' 
 
   root to: "users#index"
 
