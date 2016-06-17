@@ -1,3 +1,4 @@
+{<img src="https://travis-ci.org/caioquinta/usp_eventos.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/caioquinta/usp_eventos]
 == README
 
 This README would normally document whatever steps are necessary to get the
