@@ -1,0 +1,12 @@
+language: ruby
+
+rvm:
+  - 2.2.3
+
+before_script:
+  - cp config/database.yml
+  - bundle exec rake db:create db:migrate db:seed
+  - export BUNDLE_GEMFILE=$PWD/Gemfile
+
+script:
+  - bundle exec rake spec
