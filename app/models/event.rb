@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   has_many :participants
   has_many :users, through: :participants
 
-  scope :next_events, -> { where('begin_date >= ?', DateTime.now.beginning_of_day).order(begin_date: :asc) }
+  acts_as_taggable_on :tags
+
+  scope :next_events, -> { where('begin_date >= ? and begin_date <= ?', DateTime.now.beginning_of_day, DateTime.now.beginning_of_day + 1.month ).order(begin_date: :asc) }
   scope :current_events, -> { where('end_date >= ? and begin_date < ?', Time.current, DateTime.now.beginning_of_day).order(end_date: :asc) }
 end

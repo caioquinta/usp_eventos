@@ -7,5 +7,8 @@
     .col-lg-3= f.input :price
     .col-lg-12= f.input :begin_date
     .col-lg-12= f.input :end_date
+    .col-lg-12
+      Tipo de evento: (pode escolher mais de uma opção):
+      = collection_check_boxes( :event, :tag_list, ActsAsTaggableOn::Tag.all, :name, :name , class: 'check_box')
   .form-actions
     .col-lg-12= f.button :submit, "Enviar"
