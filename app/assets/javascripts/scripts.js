@@ -1,3 +1,4 @@
+// Responsible top menu
 (function($) {
     "use strict";
 
