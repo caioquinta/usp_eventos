@@ -1,0 +1,20 @@
+.col-lg-6  
+  %h2 Minha Lista
+.col-lg-12
+  - (current_user.events.next_events + @next_events.where(planner: current_user)).each do |event|
+    .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event
+.col-lg-6  
+  %h2 Principais Escolhas para #{current_user.name}
+.col-lg-12
+  - @next_events.where(planner: current_user).each do |event|
+    .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event
+.col-lg-12
+  %h2 Acontecendo agora!
+.col-lg-12
+  - @current_events.each do |event|
+    .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event 
+.col-lg-12 
+  %h2 Próximos Eventos
+.col-lg-12
+  - @next_events.each do |event|
+    .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event 

@@ -33,3 +33,8 @@
         { share: 'twitter', hashtags: 'uspeventos' }
         , 'facebook', 'whatsapp']
   });
+  $(document).ready(function() {
+    $(".thumbnail-tags").click(function(event){
+      $('#filters input[value='+event.target.text+']').prop('checked', !$('#filters input[value='+event.target.text+']').prop('checked'));
+    });
+  });

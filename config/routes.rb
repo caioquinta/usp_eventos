@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root 'users#home', as: :authenticated_root
   end
   get 'home', to: 'users#home'
+  put 'home', to: 'users#home'
   get 'about', to: 'users#about'
 
   root to: "users#index"

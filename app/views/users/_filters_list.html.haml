@@ -1,0 +1,4 @@
+- ActsAsTaggableOn::Tag.all.each do |tag|
+	.filter-tag
+		= check_box_tag(I18n.transliterate(tag.name).downcase, tag.name, params[:tag].try(:include?,tag.name), class: 'check-box')
+		%label.center{class: I18n.transliterate(tag.name).downcase }=tag.name
