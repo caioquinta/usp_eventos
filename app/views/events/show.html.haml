@@ -1,9 +1,9 @@
 .container-fluid.event_wrapper.col-lg-8.col-lg-offset-2{ class: "thumbnail_event_#{@event.id}"}
   = link_to "Voltar", :back
   .panel.panel-default
+    .panel-heading.col-lg-12
+      %h2= @event.name
     .panel-body
-      .col-lg-12
-        %h2= @event.name
       .col-lg-4
         De
         - if !@event.begin_date.nil?
@@ -18,13 +18,13 @@
           = @event.end_date.strftime('%H:%M')
       .col-lg-4
         %h3 Preço:
-        .ion-social-usd= @event.price
+        .currency= @event.price
       .col-lg-4
         %h3 Local:
-        .ion-ios-location= @event.location
+        .local= @event.location
       .col-lg-4
         %h3 Interessados:
-        .col-lg-3.ion-person-stalker= @event.participants.count
+        .col-lg-3.participants= @event.participants.count
         .col-lg-9.status= render 'users/event_box_buttons', event: @event 
       .col-lg-12
         %h3 Descrição:

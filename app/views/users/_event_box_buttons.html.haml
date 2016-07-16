@@ -1,5 +1,5 @@
 - if !user_signed_in? || current_user.participants.find_by(event_id: event.id).nil?
-  = link_to 'Me interessa!', add_participant_event_path(event.id), remote: true, class: 'btn btn-info ion-person-add'
+  = link_to 'Me interessa!', add_participant_event_path(event.id), remote: true, class: 'btn btn-participants participants'
 - else
   = link_to 'Desistir', remove_participant_event_path(event.id), remote: true, class: 'btn btn-danger ion-android-cancel'
 
