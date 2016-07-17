@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
   validates :location, presence: true
-
+  validates :tag_list, length: { maximum: 3, message: 'Selecionar no máximo 3 tags' }
   belongs_to :planner, class_name: 'User'
 
   has_many :participants
