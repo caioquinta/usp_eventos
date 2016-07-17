@@ -1,20 +1,5 @@
-.col-lg-6  
-  %h2 Minha Lista
-.col-lg-12
-  - (current_user.events.next_events + @next_events.where(planner: current_user)).each do |event|
-    .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event
-.col-lg-6  
-  %h2 Principais Escolhas para #{current_user.name}
-.col-lg-12
-  - @next_events.where(planner: current_user).each do |event|
-    .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event
-.col-lg-12
-  %h2 Acontecendo agora!
-.col-lg-12
-  - @current_events.each do |event|
-    .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event 
-.col-lg-12 
-  %h2 Próximos Eventos
-.col-lg-12
-  - @next_events.each do |event|
-    .col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'event_box', event: event 
+- if  user_signed_in?
+  #my_events= render 'events_line', events: current_user.events.next_and_current, title: 'Minha Lista'
+  #principal_choices= render 'events_line', events: @next_events.where(planner: current_user), title: 'Principais Escolhas para '+ current_user.name.split(' ').first
+#current=render 'events_line', events: @current_events, title: 'Acontecendo Agora!' 
+#next=render 'events_line', events: @next_events, title: 'Próximos Eventos'
