@@ -1,7 +1,7 @@
 if ('<%= user_signed_in? %>' == 'true'){
 	$('.thumbnail_event_<%=@event.id %> .status').html("<%=j render partial: 'users/event_box_buttons',  locals: { event: @event } %>");
+	$('#my_events').html("<%=j render partial: 'users/events_line',  locals: { title: 'Meus Eventos', events: current_user.try(:events).try(:next_and_current) } %>");
 }
 else {
 	$('.thumbnail_event_<%=@event.id %> .status').html("<%=j link_to 'Faça login primeiro', new_user_session_path, class: 'btn btn-default' %>");
 }
-$('#my_events').html("<%=j render partial: 'users/events_line',  locals: { title: 'Meus Eventos', events: current_user.events.next_and_current } %>");
