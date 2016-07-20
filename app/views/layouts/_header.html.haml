@@ -17,9 +17,11 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand.page-scroll{:href => root_path }
-        USP Eventos
+      - if  current_page?('/home') || ((current_page?(root_path) && user_signed_in?))
         .filter.toogle-sliderbar-1.btn.btn-primary.btn-filters Filtros
+      - else
+        %a.navbar-brand.page-scroll{:href => root_path }
+          USP Eventos
     #bs-navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav.navbar-right
         %li

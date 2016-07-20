@@ -6,6 +6,7 @@ describe 'User', type: :feature do
       visit '/'
       expect(page).to have_link 'Cadastrar', count: 2
       expect(page).to_not have_link 'Sair'
+      expect(page).to have_link 'USP Eventos'
 
       within('.inner') { click_link 'Cadastrar' }
 
@@ -22,6 +23,7 @@ describe 'User', type: :feature do
       expect(page).to have_text 'Cadastro efetuado com sucesso.'
       expect(page).to have_link 'Meus Dados'
       expect(page).to have_link 'Sair'
+      expect(page).to have_css '.filter.toogle-sliderbar-1.btn.btn-primary.btn-filters'
       user = User.last
       expect(user.name).to eql 'Bruce Wayne'
       expect(user.email).to eql 'bruce@waynecorp.com'
@@ -96,6 +98,7 @@ describe 'User', type: :feature do
       expect(page).to have_css '.thumbnail_event_' + next_event.id.to_s
       expect(page).to have_link '+Info'
       expect(page).to have_link 'Me interessa!'
+      expect(page).to have_css '.filter.toogle-sliderbar-1.btn.btn-primary.btn-filters'
 
       first(:link, 'Me interessa!').click
       expect(page).to have_link 'Faça login primeiro'
