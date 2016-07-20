@@ -1,5 +1,5 @@
 - if  user_signed_in?
   #my_events= render 'events_line', events: current_user.events.next_and_current, title: 'Minha Lista'
-  #principal_choices= render 'events_line', events: @next_events.where(planner: current_user), title: 'Principais Escolhas para '+ current_user.name.split(' ').first
+  #principal_choices= render 'events_line', events: Event.preferred(current_user.preferences), title: 'Principais Escolhas para '+ current_user.name.split(' ').first
 #current=render 'events_line', events: @current_events, title: 'Acontecendo Agora!' 
 #next=render 'events_line', events: @next_events, title: 'Próximos Eventos'

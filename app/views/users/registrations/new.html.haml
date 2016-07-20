@@ -9,6 +9,11 @@
           = f.input :email, required: true, autofocus: true
           = f.input :password, required: true, hint: ("mínimo: #{@minimum_password_length} caracteres" if @minimum_password_length)
           = f.input :password_confirmation, required: true
+          .col-lg-12
+            = collection_check_boxes( :user, :preferences, ActsAsTaggableOn::Tag.all, :name, :name ) do |b|
+              .col-lg-6
+                = b.check_box
+                = b.label(class: I18n.transliterate(b.text).downcase )
         .form-actions
           = f.button :submit, "Cadastrar"
       = render "users/shared/links"

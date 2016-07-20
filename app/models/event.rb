@@ -10,11 +10,14 @@ class Event < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
-  scope :next_events, -> { where('begin_date >= ? and begin_date <= ?', DateTime.now.beginning_of_day, DateTime.now.beginning_of_day + 1.month ).order(begin_date: :asc) }
+  scope :next_events, -> { where('begin_date >= ? and begin_date <= ?', DateTime.now.beginning_of_day, DateTime.now.beginning_of_day + 1.month).order(begin_date: :asc) }
   scope :current_events, -> { where('end_date >= ? and begin_date < ?', Time.current, DateTime.now.beginning_of_day).order(end_date: :asc) }
 
   def self.next_and_current
-  	next_events + current_events
+    next_events + current_events
   end
 
+  def self.preferred(preferences)
+    next_events.tagged_with(preferences, any: true) + current_events.tagged_with(preferences, any: true)
+  end
 end
