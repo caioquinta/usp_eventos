@@ -32,8 +32,8 @@ describe 'User', type: :feature do
       expect(page).to have_text 'Meus Dados'
 
       fill_in 'user_name', with: 'Robin'
-      find('.btn.btn-default').trigger('click')
-      expect(page).to have_text 'Próximos Eventos'
+      click_button 'Atualizar'
+      expect(page).to have_text 'Sua conta foi atualizada com sucesso.'
       user.reload
       expect(user.name).to eql 'Robin'
 
@@ -96,14 +96,13 @@ describe 'User', type: :feature do
 
       visit '/home'
       expect(page).to have_css '.thumbnail_event_' + next_event.id.to_s
-      expect(page).to have_link '+Info'
-      expect(page).to have_link 'Me interessa!'
+      expect(page).to have_link 'Salvar!'
       expect(page).to have_css '.filter.toogle-sliderbar-1.btn.btn-primary.btn-filters'
 
-      first(:link, 'Me interessa!').click
+      page.find('.btn.btn-participants.participants').trigger(:click)
       expect(page).to have_link 'Faça login primeiro'
 
-      click_link '+Info'
+      click_link next_event.name
       expect(page).to have_text next_event.name
       expect(page).to have_text next_event.location
       expect(page).to have_text next_event.description
@@ -129,7 +128,8 @@ describe 'User', type: :feature do
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: '12345678'
       click_button 'Entrar'
-      expect(page).to have_link 'Novo Evento', count: 2
+      expect(page).to have_link 'Novo Evento'
+      expect(page).to have_css '.event-floater-btn.ion-plus'
       expect(page).to have_css '.thumbnail_event_' + Event.last.id.to_s
       expect(page).to have_text 'De ' + Event.last.begin_date.strftime('%d/%m/%Y')
       expect(page).to have_text 'Até ' + Event.last.end_date.strftime('%d/%m/%Y')
@@ -145,12 +145,13 @@ describe 'User', type: :feature do
       fill_in 'event_name', with: 'Back to the future date!'
       fill_in 'event_description', with: 'Back to the future bolt accident'
       fill_in 'event_location', with: 'Hill Valley'
-      select '21', from: 'event_begin_date_3i'
-      select 'Junho', from: 'event_begin_date_2i'
-      select (Time.now.year + 1).to_s, from: 'event_begin_date_1i'
-      select '21', from: 'event_end_date_3i'
-      select 'Outubro', from: 'event_end_date_2i'
-      select (Time.now.year + 1).to_s, from: 'event_end_date_1i'
+      select (Time.now.day + 1), from: 'event_begin_date_3i'
+      select I18n.t("date.month_names")[Time.now.month], from: 'event_begin_date_2i'
+      select Time.now.year.to_s, from: 'event_begin_date_1i'
+      select (Time.now.day + 2), from: 'event_end_date_3i'
+      select I18n.t("date.month_names")[Time.now.month+1], from: 'event_end_date_2i'
+      select Time.now.year.to_s, from: 'event_end_date_1i'
+      page.find('#event_tag_list_humanas').trigger(:click)
       find('.btn.btn-default').trigger('click')
 
       expect(page).to have_text 'Evento Criado com sucesso!'
@@ -159,21 +160,24 @@ describe 'User', type: :feature do
 
       created_event = Event.last
       expect(page).to have_text 'Próximos Eventos'
-      expect(page).to have_css '.thumbnail_event_' + created_event.id.to_s, count: 2
-      expect(page).to have_css '.ion-edit', count: 2
+      expect(page).to have_css '.thumbnail_event_' + created_event.id.to_s
+      expect(page).to have_css '.ion-edit'
       within(first('.thumbnail_event_' + created_event.id.to_s)) do
         expect(page).to have_text 'Back to the future date!'
-        expect(page).to have_text '21/10/2017'
-        expect(page).to have_text '21/10/2017'
-        expect(page).to have_link '+Info'
+        expect(page).to have_text created_event.begin_date.strftime('%d/%m/%Y')
+        expect(page).to have_text created_event.end_date.strftime('%d/%m/%Y')
+        expect(page).to have_css '.thumbnail-tags.humanas'
       end
-      expect(page).to have_link 'Me interessa!', count: 3
+      expect(page).to have_link 'Salvar!', count: 3
 
-      first(:link, 'Me interessa!').click
-      expect(page).to have_link 'Desistir', count: 2
+      within(first('.thumbnail_event_' + created_event.id.to_s)) { page.find('.btn.btn-participants.participants').trigger(:click) }
+      expect(page).to have_link 'Remover', count: 3
+      expect(page).to have_text 'Meus Eventos'
+      expect(page).to have_css '.thumbnail_event_' + created_event.id.to_s, count:3
 
-      first(:link, 'Desistir').click
-      expect(page).to have_text 'Me interessa!', count: 3
+      within(first('.thumbnail_event_' + created_event.id.to_s)) { page.find('.btn.btn-danger.ion-android-cancel').trigger(:click) }
+      expect(page).to have_text 'Salvar!', count: 3
+      expect(page).to have_css '.thumbnail_event_' + created_event.id.to_s, count:2
 
       first(:css, '.ion-edit').click
       expect(page).to have_text 'Editar Evento'
@@ -181,23 +185,19 @@ describe 'User', type: :feature do
       fill_in 'event_name', with: 'Evento editado'
       fill_in 'event_description', with: 'descricao'
       fill_in 'event_location', with: 'local'
-      select '1', from: 'event_begin_date_3i'
-      select 'Janeiro', from: 'event_begin_date_2i'
-      select (Time.now.year + 2).to_s, from: 'event_begin_date_1i'
-      select '15', from: 'event_end_date_3i'
-      select 'Fevereiro', from: 'event_end_date_2i'
-      select (Time.now.year + 2).to_s, from: 'event_end_date_1i'
-      find('.btn.btn-default').trigger('click')
+      select (Time.now.day + 5), from: 'event_begin_date_3i'
+      select (Time.now.day + 6), from: 'event_end_date_3i'
+      click_button 'Enviar'
 
-      expect(page).to have_text 'Meus Eventos'
+      expect(page).to have_text 'Próximos Eventos'
       event_edited = created_event.reload
       expect(event_edited.name).to eql 'Evento editado'
       expect(event_edited.description).to eql 'descricao'
       expect(event_edited.location).to eql 'local'
-      expect(event_edited.begin_date.strftime('%d/%m/%Y')).to eql '01/01/2018'
-      expect(event_edited.end_date.strftime('%d/%m/%Y')).to eql '15/02/2018'
+      expect(page).to have_text (Time.now.day + 5).to_s + created_event.begin_date.strftime('/%m/%Y')
+      expect(page).to have_text (Time.now.day + 6).to_s + created_event.end_date.strftime('/%m/%Y')
 
-      within(first('.thumbnail_event_' + created_event.id.to_s)) { click_link '+Info' }
+      within(first('.thumbnail_event_' + created_event.id.to_s)) { click_link created_event.name }
       expect(page).to have_text created_event.name
       expect(page).to have_text created_event.location
       expect(page).to have_text created_event.description
@@ -208,8 +208,11 @@ describe 'User', type: :feature do
 
       current_event = create :current_event
       click_link 'Voltar'
-      expect(page).to have_text 'Acontecendo agora!'
+      expect(page).to have_text 'Acontecendo Agora!'
       expect(page).to have_css '.thumbnail_event_' + current_event.id.to_s
+
+      #find('#humanas').click()
+
     end
   end
 end
