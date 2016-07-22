@@ -109,7 +109,10 @@ describe 'User', type: :feature do
     end
 
     it 'visits users home and selects an event', js: true do
-      visit '/home'
+      visit '/'
+      expect(page).to have_link 'Ver Eventos'
+
+      click_link 'Ver Eventos'
       expect(page).to have_css '.thumbnail_event_' + @next_event.id.to_s
       expect(page).to have_link 'Salvar!'
       expect(page).to have_css '.filter.toogle-sliderbar-1.btn.btn-primary.btn-filters'
