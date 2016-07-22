@@ -80,6 +80,7 @@ describe 'User', type: :feature do
 
       click_link 'Entrar com Facebook'
       expect(page).to have_text 'Autenticado com sucesso com uma conta de Facebook.'
+      expect(page).to have_text 'Nos diga do que você gosta!'
       facebook_user = User.last
       expect(facebook_user.name).to eql 'Tony Stark'
       expect(facebook_user.email).to eql 'test@facebook.com'

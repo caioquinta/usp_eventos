@@ -1,6 +1,10 @@
 = link_to '', new_event_path, class: 'event-floater-btn ion-plus'
 .home_wrapper
-	%div{:canvas => "container"}
+	- if user_signed_in? && current_user.preferences.empty?
+		.alert_preferences
+			%h3 Nos diga do que você gosta!  
+			= link_to 'Complete seu perfil com suas preferências!', edit_user_registration_path
+	%div{:canvas => "container"} 
 		#events=render 'events_list'
 	.filters-wrapper{"off-canvas" => "sliderbar-1 left overlay"}
 		.panel.panel-defaut
