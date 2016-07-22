@@ -10,6 +10,8 @@
         = f.input :password, autocomplete: "off", hint: "Deixe em branco para manter a senha atual", required: false
         = f.input :password_confirmation, required: false
         .col-lg-12
+          %label Do que você gosta?
+        .col-lg-12
           = collection_check_boxes( :user, :preferences, ActsAsTaggableOn::Tag.all, :name, :name ) do |b|
             .col-lg-6
               = b.check_box
