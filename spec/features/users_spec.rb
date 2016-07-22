@@ -128,6 +128,7 @@ describe 'User', type: :feature do
   context 'with a signed user' do
     it 'create new event', js: true do
       user = create :user
+      ActsAsTaggableOn::Tag.create(name: 'Festa')
       visit '/'
       expect(page).to have_link 'Entrar', count: 2
 
@@ -148,10 +149,15 @@ describe 'User', type: :feature do
       within('.navbar') { click_link 'Novo Evento' }
       expect(page).to have_text 'Novo Evento!'
 
+      page.find('#event_tag_list_humanas').trigger('click')
+      page.find('#event_tag_list_exatas').trigger('click')
+      page.find('#event_tag_list_biolgicas').trigger('click')
+      page.find('#event_tag_list_festa').trigger('click')
       find('.btn.btn-default').trigger('click')
       expect(page).to have_text 'Alguns erros foram encontrados, por favor verifique:
 '
       expect(page).to have_text 'não pode ficar em branco', count: 3
+      expect(page).to have_text 'Selecionar no máximo 3 tags'
 
       fill_in 'event_name', with: 'Back to the future date!'
       fill_in 'event_description', with: 'Back to the future bolt accident'
@@ -162,7 +168,9 @@ describe 'User', type: :feature do
       select (Time.now.day + 2), from: 'event_end_date_3i'
       select I18n.t('date.month_names')[Time.now.month + 1], from: 'event_end_date_2i'
       select Time.now.year.to_s, from: 'event_end_date_1i'
-      page.find('#event_tag_list_humanas').trigger('click')
+      page.find('#event_tag_list_exatas').trigger('click')
+      page.find('#event_tag_list_biolgicas').trigger('click')
+      page.find('#event_tag_list_festa').trigger('click')
       find('.btn.btn-default').trigger('click')
 
       expect(page).to have_text 'Evento Criado com sucesso!'
