@@ -85,6 +85,30 @@ html, body
   font-family: FontAwesome
   color: crimson
 
+.cinema:before
+  content: '\f008'
+  padding-right: 5px
+  font-family: FontAwesome
+  color: springgreen
+
+.ciencia:before
+  content: '\f0c3'
+  padding-right: 5px
+  font-family: FontAwesome
+  color: cornflowerblue
+
+.curso:before
+  content: '\f19d'
+  padding-right: 5px
+  font-family: FontAwesome
+  color: coral
+
+.aula:before
+  content: '\f02d'
+  padding-right: 5px
+  font-family: FontAwesome
+  color: yellow
+
 .participants:before
   content: '\f007'
   padding-right: 5px
@@ -113,6 +137,22 @@ html, body
 .alert.flash 
   background-color: red
   margin-bottom: 0px
+
+.alert_preferences
+  padding: 0px 20px 10px
+  background-color: #0E95AB
+  text-align: center
+  padding-top: 5px
+  h3:before
+    content: '\f071'
+    padding-right: 5px
+    font-family: FontAwesome
+    color: white
+  a
+    color: white
+  a:hover
+    color: white
+
 
 .btn-participants
   color: white
@@ -144,6 +184,14 @@ html, body
     background-color: grey
   &.palestra
     background-color: rgba(222,43,79,0.6)
+  &.cinema
+    background-color: rgba(6,234,120,0.3)
+  &.ciencia
+    background-color: rgba(115,139,238,0.6)
+  &.curso
+    background-color: rgba(252,137,95,0.6)
+  &.aula
+    background-color: rgba(208,207,37,0.6)
   &:hover
     opacity: 0.6
     color: black
