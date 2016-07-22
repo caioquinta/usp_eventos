@@ -37,6 +37,7 @@ describe 'User', type: :feature do
       expect(user.preferences).to include 'Humanas'
       expect(page).to have_text 'Principais Escolhas para ' + user.name.split(' ').first
       within('#principal_choices') { expect(page).to have_text @next_event.name }
+      expect(page).to_not have_text 'Nos diga do que você gosta!'
 
       click_link 'Meus Dados'
       expect(page).to have_text 'Meus Dados'
