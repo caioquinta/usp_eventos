@@ -115,7 +115,7 @@ html, body
   font-family: FontAwesome
   color: #5789FF
 
-.signin_wrapper, .signup_wrapper, .edit_wrapper, .home_wrapper, .event_wrapper
+.signin_wrapper, .signup_wrapper, .edit_wrapper, .home_wrapper, .event_wrapper, .quick_event_wrapper
   font-size: 18px
   margin-top: 9%
   margin-bottom: 9%
@@ -153,7 +153,6 @@ html, body
   a:hover
     color: white
 
-
 .btn-participants
   color: white
   background-color: #5789FF
@@ -161,8 +160,13 @@ html, body
   &:before
     content: '\f234'
     padding-right: 5px
-    font-family: FontAwesome  
+    font-family: FontAwesome
     color: white
+
+.ion-alert-circled:before
+  color: red
+  padding-right: 5px
+  font-size: 18px
 
 .thumbnail-tags
   color: #36333D
@@ -266,8 +270,41 @@ html, body
 .filters-wrapper .panel-heading
   background-color: #FDB523
   opacity: 1
-  font-size: 24px  
+  font-size: 24px
 
+.quick_event_wrapper
+  color: black
+  h3
+    color: white
+  .btn-default
+    font-family: FontAwesome
+    background-color: #097F67
+    color: white
+    font-size: 30px
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    border: none
+    margin-top: 20px
+    box-shadow: 0 0 10px grey
+    &:hover
+      background-color: #097F67
+      opacity: 1
+  .chat
+    background-color: #DED8CC
+    margin-bottom: 10px
+  .messages
+    max-height: 80%
+    overflow-y: scroll
+    margin-bottom: 20px
+  .message
+    background-color: white
+    margin: 10px
+    border-radius: 3%
+    .time
+      font-style: italic
+      font-size: small
+      opacity: 0.9
 
 @media (min-width: 768px)
   .event-floater-btn
@@ -556,8 +593,6 @@ footer
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
   &:focus
-    color: #222
-    background-color: #ccc
     box-shadow: none
 
 textarea

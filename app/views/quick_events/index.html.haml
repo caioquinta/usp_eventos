@@ -1,0 +1,30 @@
+.container-fluid.quick_event_wrapper
+  %h3 Alertas
+  .col-lg-12.chat.panel-body
+    .messages
+      - QuickEvent.all.each do |quickevent|
+        .panel-body.message
+          .col-lg-12
+            = quickevent.message
+          .col-lg-12.time
+            = quickevent.created_at.strftime('%d/%m/%Y às %H:%M')
+    - if user_signed_in?
+      = simple_form_for QuickEvent.new do |f|  
+        = f.error_notification
+        .col-xs-10.col-lg-11
+          = f.input :message, required: true, :as => :text, input_html: { rows: 3 }, label: false
+        .col-xs-1.col-lg-1
+          = button_tag(class: 'btn-default') do
+            .fa-paper-plane
+    - else
+      %p.center 
+        Para enviar uma mensagem faça seu 
+        =link_to 'login', new_user_session_path
+        ou 
+        =link_to 'cadastre-se', new_user_registration_path 
+
+
+
+
+:javascript
+  $(".messages").prop({ scrollTop: $(".messages").prop("scrollHeight") });

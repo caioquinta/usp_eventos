@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :participants
   has_many :events, through: :participants
 
+  has_many :quick_events
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

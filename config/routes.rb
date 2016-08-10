@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :suggestions
 
+  resources :quick_events
+
+  get 'alertas', to: 'quick_events#index'
+
   resources :events do
     member do
       get 'add_participant'
