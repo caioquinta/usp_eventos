@@ -1,12 +1,8 @@
 class QuickEventsController < ApplicationController
   def create
     @event = QuickEvent.new(quick_event_params.merge(user: current_user))
-    if @event.save
-      flash[:notice] = 'Evento Criado com Sucesso'
-      render 'index'
-    else
-      render 'index'
-    end
+    flash[:notice] = 'Evento Criado com Sucesso' if @event.save
+    render 'index'
   end
 
   def quick_event_params
