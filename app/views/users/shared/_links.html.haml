@@ -14,3 +14,7 @@
   - if controller_name != 'sessions'
     = link_to "Entrar", new_session_path(resource_name)
     %br/
+.col-lg-12
+  - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+    = link_to "Esqueci minha senha", new_password_path(resource_name)
+    %br/

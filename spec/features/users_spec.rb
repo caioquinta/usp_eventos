@@ -55,6 +55,45 @@ describe 'User', type: :feature do
 
       click_link 'Sair'
       expect(page).to have_text 'USP Eventos'
+
+      within('.inner') { click_link 'Entrar' }
+      expect(page).to have_link 'Esqueci minha senha'
+
+      click_link 'Esqueci minha senha'
+      expect(page).to have_text 'E-mail'
+
+      fill_in 'user_email', with: 'e-mail invalido'
+      click_button 'Enviar instruções para nova senha'
+
+      expect(page).to have_text 'não encontrado'
+      fill_in 'user_email', with: user.email
+
+      expect do
+        click_button 'Enviar instruções para nova senha'
+      end.to change(ActionMailer::Base.deliveries, :count).by(1)
+      expect(page).to have_text 'Dentro de minutos, você receberá um e-mail com instruções para a troca da sua senha.'
+
+      last_email = ActionMailer::Base.deliveries.last
+      expect(last_email.to.first).to eql user.email
+      expect(last_email.subject).to eql 'Instruções para troca de senha'
+
+      link = last_email.body.raw_source.match(/href="(?<url>.+?)">/)[:url]
+      link.slice! 'http://localhost:3000'
+      visit link
+
+      fill_in 'user_password', with: 'novasenha'
+      fill_in 'user_password_confirmation', with: 'novasenha'
+      click_button 'Trocar'
+      expect(page).to have_text 'Sua senha foi alterada com sucesso. Você está logado.'
+
+      click_link 'Sair'
+      expect(page).to have_text 'USP Eventos'
+
+      within('.inner') { click_link 'Entrar' }
+      fill_in 'user_email', with: user.email
+      fill_in 'user_password', with: 'novasenha'
+      click_button 'Entrar'
+      expect(page).to have_link 'Novo Evento'
     end
 
     it 'signs up with facebook', js: true do
@@ -167,10 +206,10 @@ describe 'User', type: :feature do
       fill_in 'event_name', with: 'Back to the future date!'
       fill_in 'event_description', with: 'Back to the future bolt accident'
       fill_in 'event_location', with: 'Hill Valley'
-      select (Time.now.day + 1), from: 'event_begin_date_3i'
+      select (Time.now.day + 1) % 30, from: 'event_begin_date_3i'
       select I18n.t('date.month_names')[Time.now.month], from: 'event_begin_date_2i'
       select Time.now.year.to_s, from: 'event_begin_date_1i'
-      select (Time.now.day + 2), from: 'event_end_date_3i'
+      select (Time.now.day + 2) % 30, from: 'event_end_date_3i'
       select I18n.t('date.month_names')[Time.now.month + 1], from: 'event_end_date_2i'
       select Time.now.year.to_s, from: 'event_end_date_1i'
       page.find('#event_tag_list_exatas').trigger('click')
@@ -209,8 +248,8 @@ describe 'User', type: :feature do
       fill_in 'event_name', with: 'Evento editado'
       fill_in 'event_description', with: 'descricao'
       fill_in 'event_location', with: 'local'
-      select Time.now.day + 5, from: 'event_begin_date_3i'
-      select Time.now.day + 6, from: 'event_end_date_3i'
+      select (Time.now.day + 5) % 30, from: 'event_begin_date_3i'
+      select (Time.now.day + 6) % 30, from: 'event_end_date_3i'
       click_button 'Enviar'
 
       expect(page).to have_text 'Próximos Eventos'
@@ -218,8 +257,8 @@ describe 'User', type: :feature do
       expect(event_edited.name).to eql 'Evento editado'
       expect(event_edited.description).to eql 'descricao'
       expect(event_edited.location).to eql 'local'
-      expect(page).to have_text (Time.now.day + 5).to_s + created_event.begin_date.strftime('/%m/%Y')
-      expect(page).to have_text (Time.now.day + 6).to_s + created_event.end_date.strftime('/%m/%Y')
+      expect(page).to have_text ((Time.now.day + 5) % 30).to_s + created_event.begin_date.strftime('/%m/%Y')
+      expect(page).to have_text ((Time.now.day + 6) % 30).to_s + created_event.end_date.strftime('/%m/%Y')
 
       within(first('.thumbnail_event_' + created_event.id.to_s)) { click_link created_event.name }
       expect(page).to have_text created_event.name

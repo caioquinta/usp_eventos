@@ -1,11 +1,14 @@
-%h2 Troque sua senha
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  = f.input :reset_password_token, as: :hidden
-  = f.full_error :reset_password_token
-  .form-inputs
-    = f.input :password, label: "Nova senha", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-    = f.input :password_confirmation, label: "Confirme sua nova senha", required: true
-  .form-actions
-    = f.button :submit, "Trocar"
-= render "users/shared/links"
+.container-fluid.signup_wrapper
+	.row
+		.col-lg-4.col-lg-offset-4
+			%h2 Troque sua senha
+			= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+				= f.error_notification
+				= f.input :reset_password_token, as: :hidden
+				= f.full_error :reset_password_token
+				.form-inputs
+					= f.input :password, label: "Nova senha", required: true, autofocus: true, hint: ("#{@minimum_password_length} mínimo de caracteres" if @minimum_password_length)
+					= f.input :password_confirmation, label: "Confirme sua nova senha", required: true
+				.form-actions
+					= f.button :submit, "Trocar"
+			= render "users/shared/links"
