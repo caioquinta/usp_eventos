@@ -12,7 +12,7 @@
       = simple_form_for QuickEvent.new do |f|  
         = f.error_notification
         .col-xs-9.col-lg-11
-          = f.input :message, required: true, :as => :text, input_html: { rows: 3 }, label: false
+          = f.input :message, required: true, :as => :text, input_html: { rows: 3 }, hint: 'Escreva seu alerta aqui', label: false
         .col-xs-1.col-lg-1
           = button_tag(class: 'btn-default') do
             .fa-paper-plane
