@@ -17,5 +17,4 @@
 //= require bootstrap.min
 //= require scripts
 //= require users
-//= social-likes.min
 //= require_tree .
