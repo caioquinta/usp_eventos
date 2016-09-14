@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap.min
 //= require scripts
 //= require users
