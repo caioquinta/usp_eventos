@@ -3,4 +3,4 @@
 		%h3 #{title}
 	.col-lg-12
 		- events.each do |event|
-			.col-lg-3.event_box{ class: "thumbnail_event_#{event.id}"}= render 'users/event_box', event: event
+			.col-lg-3.animated.bounceInRight.event_box{ class: "thumbnail_event_#{event.id}"}= render 'users/event_box', event: event

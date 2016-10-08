@@ -1,2 +1,2 @@
-$('.thumbnail_event_<%=@event.id %> .status').html("<%= escape_javascript(render partial: 'users/event_box_buttons',  locals: { event: @event } ).html_safe %>");
+$('.thumbnail_event_<%=@event.id %> .panel-footer').html("<%= escape_javascript(render partial: 'users/event_box_buttons',  locals: { event: @event } ).html_safe %>");
 $('#my_events').html("<%=j render partial: 'users/events_line',  locals: { title: 'Meus Eventos', events: current_user.events.next_and_current } %>");

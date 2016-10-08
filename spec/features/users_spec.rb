@@ -188,8 +188,7 @@ describe 'User', type: :feature do
       expect(page).to have_link 'Novo Evento'
       expect(page).to have_css '.event-floater-btn.ion-plus'
       expect(page).to have_css '.thumbnail_event_' + Event.last.id.to_s
-      expect(page).to have_text 'De ' + Event.last.begin_date.strftime('%d/%m/%Y')
-      expect(page).to have_text 'Até ' + Event.last.end_date.strftime('%d/%m/%Y')
+      expect(page).to have_text I18n.l(Event.last.begin_date, format: '%A, %d de %B')
       within('.navbar') { click_link 'Novo Evento' }
       expect(page).to have_text 'Novo Evento!'
 
@@ -224,11 +223,9 @@ describe 'User', type: :feature do
       created_event = Event.last
       expect(page).to have_text 'Próximos Eventos'
       expect(page).to have_css '.thumbnail_event_' + created_event.id.to_s
-      expect(page).to have_css '.ion-edit'
       within(first('.thumbnail_event_' + created_event.id.to_s)) do
         expect(page).to have_text 'Back to the future date!'
-        expect(page).to have_text created_event.begin_date.strftime('%d/%m/%Y')
-        expect(page).to have_text created_event.end_date.strftime('%d/%m/%Y')
+        expect(page).to have_text I18n.l(created_event.begin_date, format: '%A, %d de %B')
         expect(page).to have_css '.thumbnail-tags.humanas'
       end
       expect(page).to have_link 'Salvar!', count: 3
@@ -242,6 +239,16 @@ describe 'User', type: :feature do
       expect(page).to have_text 'Salvar!', count: 3
       expect(page).to have_css '.thumbnail_event_' + created_event.id.to_s, count: 1
 
+      within(first('.thumbnail_event_' + created_event.id.to_s)) { click_link created_event.name }
+      expect(page).to have_text created_event.name
+      expect(page).to have_text created_event.location
+      expect(page).to have_text created_event.description
+      expect(page).to have_text created_event.participants.count
+      expect(page).to have_text created_event.price
+      expect(page).to have_text created_event.begin_date.strftime('%d/%m/%Y às %H:%M')
+      expect(page).to have_text created_event.end_date.strftime('%d/%m/%Y às %H:%M')
+      expect(page).to have_css '.ion-edit'
+
       first(:css, '.ion-edit').click
       expect(page).to have_text 'Editar Evento'
 
@@ -253,24 +260,14 @@ describe 'User', type: :feature do
       click_button 'Enviar'
 
       expect(page).to have_text 'Próximos Eventos'
-      event_edited = created_event.reload
-      expect(event_edited.name).to eql 'Evento editado'
-      expect(event_edited.description).to eql 'descricao'
-      expect(event_edited.location).to eql 'local'
-      expect(page).to have_text ((Time.now.day + 5) % 30).to_s + created_event.begin_date.strftime('/%m/%Y')
-      expect(page).to have_text ((Time.now.day + 6) % 30).to_s + created_event.end_date.strftime('/%m/%Y')
-
-      within(first('.thumbnail_event_' + created_event.id.to_s)) { click_link created_event.name }
-      expect(page).to have_text created_event.name
-      expect(page).to have_text created_event.location
-      expect(page).to have_text created_event.description
-      expect(page).to have_text created_event.participants.count
-      expect(page).to have_text created_event.price
-      expect(page).to have_text created_event.begin_date.strftime('%d/%m/%Y às %H:%M')
-      expect(page).to have_text created_event.end_date.strftime('%d/%m/%Y às %H:%M')
+      created_event.reload
+      expect(created_event.name).to eql 'Evento editado'
+      expect(created_event.description).to eql 'descricao'
+      expect(created_event.location).to eql 'local'
+      expect(page).to have_text I18n.l(created_event.begin_date, format: '%A, %d de %B')
 
       current_event = create :current_event
-      click_link 'Voltar'
+      visit '/'
       expect(page).to have_text 'Acontecendo Agora!'
       expect(page).to have_css '.thumbnail_event_' + current_event.id.to_s
 =begin

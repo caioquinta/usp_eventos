@@ -110,7 +110,7 @@ html, body
   color: yellow
 
 .participants:before
-  content: '\f007'
+  content: '\f271'
   padding-right: 5px
   font-family: FontAwesome
   color: #5789FF
@@ -118,7 +118,7 @@ html, body
 .signin_wrapper, .signup_wrapper, .edit_wrapper, .home_wrapper, .event_wrapper, .quick_event_wrapper
   font-size: 18px
   margin-bottom: 9%
-  margin-top: 100px
+  margin-top: 110px
   form .form-actions
     text-align: center
   .ion-social-facebook:before, .ion-person-add:before, .ion-android-cancel:before, .ion-person-stalker:before, .ion-ios-location:before, .ion-social-usd:before
@@ -126,7 +126,11 @@ html, body
     font-size: 16px
   .panel-default
     background-color: transparent
-    min-height: 40%
+    min-height: 35%
+    border: none
+    animation-play-state: paused
+    &:hover
+      animation-play-state: running
 
 .notice
   background-color: #0E95AB
@@ -156,11 +160,13 @@ html, body
 .btn-participants
   color: white
   background-color: #5789FF
-  box-shadow: 0 0 5px grey
   &:before
-    content: '\f234'
+    content: '\f271'
     padding-right: 5px
     font-family: FontAwesome
+    color: white
+  &:hover
+    font-style: underline
     color: white
 
 .ion-alert-circled:before
@@ -203,39 +209,39 @@ html, body
 .event_box
   text-align: center
   font-size: 14px
-  margin-bottom: 1%
   .name
     a
       color: #36333D
-    a:hover
-      color: #0E95AB
     p
       line-height: 1
       -webkit-line-clamp: 1
-      max-height: 30px
-      min-height: 30px
-      font-size: 14px
+      max-height: 45px
+      min-height: 45px
+      padding: 10px
+      line-weight: 400px
       overflow: hidden
+      font-size: 18px
+  .dates
+    padding: 2px
+    color: white
+    &:before
+      content: '\f073'
+      padding-right: 5px
+      font-family: FontAwesome
+      color: white
   .local
     -webkit-line-clamp: 1
     -webkit-box-orient: vertical
     max-height: 40px
     min-height: 40px
     overflow: hidden
-  .dates
-    padding: 5px
   .tags
     max-height: 40px
     min-height: 40px
-  .planner_buttons > .btn
-    color: #36333D
-    border: 1px solid #36333D
-  .btn
-    margin-bottom: 10%
   .panel:hover
-    box-shadow: 0 0 20px grey
+    box-shadow: 0 0 20px #1094AB
   .panel-heading
-    background-color: #FDB523
+    background-color: #1094AB
     z-index: 10
   .panel-body
     background-color: white
@@ -243,6 +249,9 @@ html, body
     opacity: 0.9
   .panel-footer
     min-height: 8%
+    .btn-default
+      color: white
+      background-color: #1094AB
 
 .facebook-btn
   border-color: #3B5998
@@ -421,8 +430,7 @@ footer
   padding: 0
 
 .navbar-default
-  border-color: rgba(35, 35, 35, 0.05)
-  font-family: 'Questrial','Helvetica Neue',Arial,sans-serif
+  font-family: sans-serif,'Helvetica Neue',Arial
   background-color: #FDB523
   font-weight: bold
   -webkit-transition: all .4s
@@ -431,7 +439,7 @@ footer
   padding-bottom: 10px
 
 .navbar-header > .navbar-brand
-  font-family: 'Questrial','Helvetica Neue',Arial,sans-serif
+  font-family: sans-serif,'Helvetica Neue',Arial
   padding: 15px
   -webkit-transition: padding .2s ease-in
   -moz-transition: padding .2s ease-in
@@ -440,6 +448,7 @@ footer
     color: #0E95AB
 
 .navbar-default
+  padding-top: 10px
   .navbar-toggle
     border-color: transparent
   .navbar-collapse
@@ -472,13 +481,14 @@ footer
     min-height: 60px
     color: white
   .navbar-header > .navbar-brand
-    color: rgba(255, 255, 255, 0.7)
+    color: white
   .navbar-default
     .navbar-header .navbar-brand
       &:hover, &:focus
         color: #f4f4f4
+        text-decoration: underline
     .nav > li > a
-      color: rgba(255, 255, 255, 0.8)
+      color: white
       padding: 20px
       letter-spacing: 1.1px
       &:focus
@@ -487,6 +497,7 @@ footer
         letter-spacing: 1.1px
       &:hover, &:focus:hover
         color: #fefefe
+        text-decoration: underline
     &.affix
       border-color: rgba(34, 34, 34, 0.05)
       background-color: #222
@@ -526,15 +537,13 @@ header
     text-align: center
     z-index: 2
     .inner
-      h1
-        margin-top: 0
-        margin-bottom: 0
-        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+      color: white
+      h1 > p
+        font-size:  70px
       p
         margin-bottom: 50px
         font-size: 16px
         font-weight: 300
-        color: rgba(255, 255, 255, 0.7)
 
 #video-background
   position: absolute
@@ -547,7 +556,6 @@ header
   z-index: 1
   &.collapsing
     display: none
-
 footer
   background-color: #2d2d2d
 
@@ -753,13 +761,13 @@ fieldset[disabled] .btn-default.active
 .btn
   &.btn-primary
     background-color: transparent
-    border: 1px solid #f0f0f0
+    border: 4px solid #f0f0f0
     border-color: #f0f0f0
     -webkit-transition: all .35s
     -moz-transition: all .35s
     transition: all .35s
     &:hover
-      opacity: 0.7
+      background-color: #1094AB
   border: 0
   border-radius: 290px
   font-family: 'Helvetica Neue',Arial,sans-serif

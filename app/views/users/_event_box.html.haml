@@ -1,26 +1,18 @@
-.panel.panel-default
-  .panel-heading.col-lg-12.col-sm-12.name
-    %p= link_to event.name, event_path(event.id)
+.panel.panel-default.animated.bounce
+  .panel-heading.col-lg-12.col-sm-12
+    .dates= l(event.begin_date, format: '%A, %d de %B')
   .panel-body
+    .col-lg-12.name
+      %p= link_to event.name, event_path(event.id)
     .col-lg-12.col-sm-12.local
       = event.location
-    .col-lg-12.dates
-      .col-lg-6.col-sm-12
-        De
-        = event.begin_date.strftime('%d/%m/%Y')
-      .col-lg-6.col-sm-12
-        Até
-        = event.end_date.strftime('%d/%m/%Y')
-    .col-lg-12.col-sm-12.status=render 'users/event_box_buttons', event: event
     .col-lg-12.tags
       - event.tags.try(:each) do |tag|
         = link_to tag.name, home_url(tag: tag.name), remote: true, class: 'thumbnail-tags '+I18n.transliterate(tag.name).downcase
   .panel-footer
+    .col-lg-5.col-sm-5=render 'users/event_box_buttons', event: event
     .col-lg-7.col-sm-5{ class: "social-share-btn-#{event.id}"}
-    .col-lg-5.col-sm-5.planner_buttons
-      - if event.planner == current_user
-        = link_to '', edit_event_path(event.id), class: 'btn btn-primary ion-edit'
-        = link_to '', event_path(event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
+
 
 :javascript
   $(".social-share-btn-#{event.id}").jsSocials({
