@@ -25,7 +25,11 @@
       .col-lg-4
         %h3 Interessados:
         .col-lg-3.participants= @event.participants.count
-        .col-lg-9.status= render 'users/event_box_buttons', event: @event 
+        .col-lg-9= render 'users/event_box_buttons', event: @event 
       .col-lg-12
         %h3 Descrição:
         = simple_format @event.description
+      .col-lg-5.col-sm-5.planner_buttons
+        - if @event.planner == current_user
+          = link_to '', edit_event_path(@event.id), class: 'btn btn-primary ion-edit'
+          = link_to '', event_path(@event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
