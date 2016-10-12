@@ -146,9 +146,16 @@ html, body
     &:hover
       animation-play-state: running
 
-
-.planner_buttons
-  margin-bottom: 10px
+.event_wrapper
+  .planner_buttons
+    margin-bottom: 10px
+  .poster
+    background-color: white
+    max-height: 300px
+    overflow-y: hidden
+    img
+      margin-left: auto
+      margin-right: auto 
 
 .notice
   background-color: #0E95AB
@@ -225,19 +232,27 @@ html, body
     color: black
 
 .event_box
+  margin: 10px 0px 10px 0px
+  .panel
+    margin: 0px
+  .panel-body
+    padding: 0px 15px 0px 15px
   .panel-heading
     background-color: #1094AB
-    z-index: 10
-  .panel-body
+  .poster
+    background-color: white
+    width: auto
+    height: 100px
+    overflow: hidden
+    font-family: 'sans-serif'
     background-color: white
     color: #36333D
-    opacity: 0.9
+    padding: 0px
   .panel-footer
     min-height: 8%
     .btn-default
       color: white
       background-color: #1094AB
-
 
 .event_box
   text-align: center
@@ -265,12 +280,12 @@ html, body
   .local
     -webkit-line-clamp: 1
     -webkit-box-orient: vertical
-    max-height: 40px
-    min-height: 40px
+    font-size: 12px 
     overflow: hidden
   .tags
-    max-height: 40px
-    min-height: 40px
+    max-height: 25px
+    min-height: 25px
+    font-size: 12px
   .panel:hover
     box-shadow: 0 0 20px #1094AB
 

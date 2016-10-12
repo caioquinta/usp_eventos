@@ -7,6 +7,7 @@
     .col-lg-3= f.input :price
     .col-lg-12= f.input :begin_date
     .col-lg-12= f.input :end_date
+    .col-lg-12= f.input :avatar, as: :file
     .col-lg-12{class: tag_list_error? }
       = f.label :tag_list, 'Tipo de evento: (escolha até 3 opções):'
       - unless @event.errors[:tag_list].empty?

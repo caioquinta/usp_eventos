@@ -8,19 +8,23 @@
   .col-lg-12.panel.panel-default
     .panel-heading
       %h2= @event.name
+    - if @event.avatar.exists?
+      .poster
+        = image_tag @event.avatar.url, class: 'img-responsive'
     .panel-body
-      .col-lg-4
-        De
-        - if !@event.begin_date.nil?
-          = @event.begin_date.strftime('%d/%m/%Y')
-          às
-          = @event.begin_date.strftime('%H:%M')
-      .col-lg-8
-        Até
-        - if !@event.end_date.nil?
-          = @event.end_date.strftime('%d/%m/%Y')
-          às
-          = @event.end_date.strftime('%H:%M')
+      .dates
+        .col-lg-4
+          De
+          - if !@event.begin_date.nil?
+            = @event.begin_date.strftime('%d/%m/%Y')
+            às
+            = @event.begin_date.strftime('%H:%M')
+        .col-lg-8
+          Até
+          - if !@event.end_date.nil?
+            = @event.end_date.strftime('%d/%m/%Y')
+            às
+            = @event.end_date.strftime('%H:%M')
       .col-lg-4
         %h3 Preço:
         .currency= @event.price
@@ -30,7 +34,7 @@
       .col-lg-4
         %h3 Interessados:
         .col-lg-3.participants= @event.participants.count
-        .col-lg-9= render 'users/event_box_buttons', event: @event 
+        .col-lg-9= render 'users/event_box_buttons', event: @event
       .col-lg-12
         %h3 Descrição:
         = simple_format @event.description
