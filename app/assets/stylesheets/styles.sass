@@ -124,13 +124,31 @@ html, body
   .ion-social-facebook:before, .ion-person-add:before, .ion-android-cancel:before, .ion-person-stalker:before, .ion-ios-location:before, .ion-social-usd:before
     padding-right: 5px
     font-size: 16px
+  .panel-heading
+    background-color: #1094AB
+    z-index: 10
+    color: white
+    border-radius: 0px
+  .panel-body
+    color: #36333D
+    background-color: white
+    .btn-default
+      color: white
+      background-color: #1094AB
+      margin-top: 20px
+      font-size: 16px
   .panel-default
-    background-color: transparent
     min-height: 35%
     border: none
+    border-radius: 0px
+    background-color: inherit
     animation-play-state: paused
     &:hover
       animation-play-state: running
+
+
+.planner_buttons
+  margin-bottom: 10px
 
 .notice
   background-color: #0E95AB
@@ -207,6 +225,21 @@ html, body
     color: black
 
 .event_box
+  .panel-heading
+    background-color: #1094AB
+    z-index: 10
+  .panel-body
+    background-color: white
+    color: #36333D
+    opacity: 0.9
+  .panel-footer
+    min-height: 8%
+    .btn-default
+      color: white
+      background-color: #1094AB
+
+
+.event_box
   text-align: center
   font-size: 14px
   .name
@@ -240,18 +273,6 @@ html, body
     min-height: 40px
   .panel:hover
     box-shadow: 0 0 20px #1094AB
-  .panel-heading
-    background-color: #1094AB
-    z-index: 10
-  .panel-body
-    background-color: white
-    color: #36333D
-    opacity: 0.9
-  .panel-footer
-    min-height: 8%
-    .btn-default
-      color: white
-      background-color: #1094AB
 
 .facebook-btn
   border-color: #3B5998
@@ -544,6 +565,11 @@ header
         margin-bottom: 100px
         font-size: 16px
         font-weight: 300
+
+.pattern-bg
+  background:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAIElEQVQIW2NkYGD4zwABjFAazMAqCFMAp+FakGWwCgIAtpQCBvZ2xwcAAAAASUVORK5CYII=')
+  background-color: rgba(0, 0, 0, .7)
+  background-blend-mode: multiply
 
 #video-background
   position: absolute

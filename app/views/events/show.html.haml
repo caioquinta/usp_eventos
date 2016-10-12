@@ -1,7 +1,12 @@
 .container-fluid.event_wrapper.col-lg-8.col-lg-offset-2{ class: "thumbnail_event_#{@event.id}"}
-  = link_to "Voltar", :back
-  .panel.panel-default
-    .panel-heading.col-lg-12
+  .planner_buttons
+    .col-lg-10= link_to "Voltar", :back
+    .col-lg-2.planner_buttons
+      - if @event.planner == current_user
+        = link_to '', edit_event_path(@event.id), class: 'btn btn-primary ion-edit'
+        = link_to '', event_path(@event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
+  .col-lg-12.panel.panel-default
+    .panel-heading
       %h2= @event.name
     .panel-body
       .col-lg-4
@@ -29,7 +34,3 @@
       .col-lg-12
         %h3 Descrição:
         = simple_format @event.description
-      .col-lg-5.col-sm-5.planner_buttons
-        - if @event.planner == current_user
-          = link_to '', edit_event_path(@event.id), class: 'btn btn-primary ion-edit'
-          = link_to '', event_path(@event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
