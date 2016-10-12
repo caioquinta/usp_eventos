@@ -274,7 +274,6 @@ describe 'User', type: :feature do
       find('.filter.toogle-sliderbar-1.btn.btn-primary.btn-filters').trigger(:click)
       expect(page).to have_css '.center.humanas'
 
-
       find('#exatas').trigger(:click)
       expect(page).to have_css '.thumbnail-tags.humanas', count: 3
       expect(page).to_not have_text 'Back to the future date!'
