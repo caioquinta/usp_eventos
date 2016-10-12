@@ -158,6 +158,7 @@ describe 'User', type: :feature do
 
       page.find('.btn.btn-participants.participants').trigger(:click)
       expect(page).to have_link 'Faça login primeiro'
+      expect(page).to have_link @next_event.name
 
       click_link @next_event.name
       expect(page).to have_text @next_event.name
