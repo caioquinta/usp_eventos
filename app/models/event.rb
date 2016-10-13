@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
 
   acts_as_taggable_on :tags
 
-  has_attached_file :avatar, styles: { medium: '720x480>' }, default_url: '/system/events/missing.png'
+  has_attached_file :avatar, storage: :dropbox, dropbox_credentials: Rails.root.join("config/dropbox.yml"), default_url: '/system/events/missing.png'
   validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 
   scope :next_events, -> { where('begin_date >= ? and begin_date <= ?', DateTime.now.beginning_of_day, DateTime.now.beginning_of_day + 1.month).order(begin_date: :asc) }

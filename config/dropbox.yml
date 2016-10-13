@@ -1,0 +1,6 @@
+app_key: <%= ENV['USPEVENTOS_DROPBOX_KEY'] %>
+app_secret: <%= ENV['USPEVENTOS_DROPBOX_SECRET'] %>
+access_token: <%= ENV['USPEVENTOS_DROPBOX_TOKEN'] %>
+access_token_secret: <%= ENV['USPEVENTOS_DROPBOX_TOKEN_SECRET'] %>
+user_id: <%= ENV['USPEVENTOS_DROPBOX_USER_ID'] %>
+access_type: "app_folder"
