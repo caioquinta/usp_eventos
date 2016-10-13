@@ -25,6 +25,7 @@ pt-BR:
         begin_date: 'Início'
         end_date: 'Fim'
         tag_list: 'Preferências'
+        avatar: 'Imagem de Capa'
     error_notification:
       default_message: "Alguns erros foram encontrados, por favor verifique:"
 
