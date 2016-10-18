@@ -44,7 +44,7 @@ gem 'omniauth-facebook'
 
 gem 'font-awesome-sass'
 
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '3.5.0'
 
 gem 'jquery-turbolinks'
 

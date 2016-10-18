@@ -281,7 +281,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts-as-taggable-on
+  acts-as-taggable-on (= 3.5.0)
   byebug
   capybara
   capybara-screenshot
