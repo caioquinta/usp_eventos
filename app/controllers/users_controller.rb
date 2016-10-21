@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @next_events = Event.next_events
+  end
+
   def user_params
     params.require(:user).permit(events_attributes: [:id, :name, :tag_list, :_destroy])
   end

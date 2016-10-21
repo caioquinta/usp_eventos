@@ -9,11 +9,16 @@
       = link_to 'Cadastrar', new_user_registration_path, class: 'btn btn-primary btn-xl'
       = link_to 'Entrar', new_user_session_path, class: 'btn btn-primary btn-xl'
       = link_to 'Ver Eventos', home_path, class: 'btn btn-primary btn-xl'
+  #down-btn.down
   %video#video-background.fillWidth.fadeIn.wow.collapse.in{:autoplay => "", "data-wow-delay" => "0.5s", :loop => true}
     %source{:src => "https://linux.ime.usp.br/~caioquinta/movie.mp4", :type => "video/mp4"}
       Seu browser não suporta video tags, por favor atualize-o assim que puder.
       Your browser does not support the video tag. I suggest you upgrade your browser.
+#events
+  .event_wrapper.col-lg-12.col-md-12
+    #next=render 'events_line', events: @next_events, title: 'Próximos Eventos'
 .container
+  %hr.primary/
   .row
     .col-lg-4.col-md-4.text-center
       .feature
@@ -34,3 +39,11 @@
   .container
     .row
       = render 'suggestions/form'
+
+
+:javascript
+$( document ).ready(function() {  
+  $("#down-btn").click(function() {
+    $('html,body').animate({ scrollTop: $("#events").offset().top}, 'slow');
+  });
+});
