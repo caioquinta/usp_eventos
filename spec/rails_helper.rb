@@ -12,8 +12,8 @@ require 'capybara/poltergeist'
 require 'database_cleaner'
 require 'simplecov'
 SimpleCov.start do
-  add_group "Models", "app/models"
-  add_group "Controllers", "app/controllers"
+  add_group 'Models', 'app/models'
+  add_group 'Controllers', 'app/controllers'
 end
 Capybara.javascript_driver = :poltergeist
 Capybara.default_max_wait_time = 30
