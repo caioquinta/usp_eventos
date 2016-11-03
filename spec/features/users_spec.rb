@@ -160,7 +160,7 @@ describe 'User', type: :feature do
       expect(page).to have_link 'Faça login primeiro'
       expect(page).to have_link @next_event.name
 
-      within(first('.thumbnail_event_' + @next_event.id.to_s)) { find('.name a').trigger(:click)}
+      within(first('.thumbnail_event_' + @next_event.id.to_s)) { find('.name a').trigger(:click) }
       expect(page).to have_text @next_event.name
       expect(page).to have_text @next_event.location
       expect(page).to have_text @next_event.description
@@ -240,7 +240,7 @@ describe 'User', type: :feature do
       expect(page).to have_text 'Salvar!', count: 3
       expect(page).to have_css '.thumbnail_event_' + created_event.id.to_s, count: 1
 
-      within(first('.thumbnail_event_' + created_event.id.to_s)) { find('.name a').trigger(:click)}
+      within(first('.thumbnail_event_' + created_event.id.to_s)) { find('.name a').trigger(:click) }
       expect(page).to have_text created_event.name
       expect(page).to have_text created_event.location
       expect(page).to have_text created_event.description
