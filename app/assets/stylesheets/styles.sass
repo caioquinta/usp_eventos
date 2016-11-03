@@ -463,12 +463,21 @@ aside
   padding: 50px 0
 
 footer
-  position: fixed
+  position: relative
   left: 0px
   bottom: 0px
-  height: 30px
   width: 100%
-  padding: 15px
+  padding: 5px  
+  img
+    height: auto
+    margin: 5px 0px 10px 0px
+    &.img-ime
+      width: 20%
+    &.img-usp
+      padding-top: 15px
+      width: 80%
+  .links
+    padding: 15px 
 
 .no-padding
   padding: 0
@@ -642,7 +651,6 @@ footer
   font-size: 48px
   font-family: FontAwesome
   color: white
-  background-color: #EAA720
   padding: 1%
   position: absolute
   right: 48%
@@ -650,6 +658,7 @@ footer
   z-index: 10
   line-height: 50px
   opacity: 0.9
+  margin-bottom: 1%
 .down:hover
   cursor: pointer
 

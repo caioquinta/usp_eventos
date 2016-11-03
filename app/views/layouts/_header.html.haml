@@ -26,10 +26,6 @@
       %ul.nav.navbar-nav.navbar-right
         %li
           = link_to 'Alertas!', alertas_path, class: 'ion-alert-circled'
-        %li
-          = link_to 'Sobre', about_path
-        %li
-          = link_to 'Sugestões', new_suggestion_path
         - if user_signed_in?
           %li
             = link_to 'Novo Evento', new_event_path
@@ -38,8 +34,6 @@
           %li        
             = link_to 'Sair', destroy_user_session_path, method: :delete
         - else
-          %li
-            = link_to 'Cadastrar', new_user_registration_path
           %li  
             = link_to 'Entrar', new_user_session_path
   .notice

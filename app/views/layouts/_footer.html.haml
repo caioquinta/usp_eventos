@@ -1,4 +1,13 @@
 %footer#footer
   .container-fluid.text-center
-    %span.text-muted.small
-      Projeto de conclusão do curso de Bacharelado em Ciência da Computação para Instituto de Matemática e Estatística da Universidade de São Paulo.
+    .col-lg-2.col-lg-offset-2.links
+      .col-lg-12= link_to 'Sobre', about_path
+      .col-lg-12= link_to 'Sugestões', new_suggestion_path
+      .col-lg-12= link_to 'Cadastrar', new_user_registration_path
+    .col-lg-4
+      %img{ alt: "USP", src: "/assets/usp_ccsl_horizontal.png",class: 'img-usp'}/
+    .col-lg-3
+      %img{ alt: "IME-USP", src: "/assets/ime.png",class: 'img-ime'}/
+
+
+
