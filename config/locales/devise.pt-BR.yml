@@ -24,7 +24,7 @@ pt-BR:
         subject: 'Instruções de desbloqueio'
     omniauth_callbacks:
       failure: 'Não foi possível autenticá-lo como %{kind} porque "%{reason}".'
-      success: 'Autenticado com sucesso com uma conta de %{kind}.'
+      success: 'Autenticado com sucesso.'
     passwords:
       no_token: "Você só pode acessar essa página através de um e-mail de troca de senha. Se já estiver acessando por um e-mail, verifique se a URL fornecida está completa."
       send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a troca da sua senha.'

@@ -119,11 +119,44 @@ describe 'User', type: :feature do
       expect(page).to have_link 'Facebook'
 
       click_link 'Facebook'
-      expect(page).to have_text 'Autenticado com sucesso com uma conta de Facebook.'
+      expect(page).to have_text 'Autenticado com sucesso.'
       expect(page).to have_text 'Nos diga do que você gosta!'
       facebook_user = User.last
       expect(facebook_user.name).to eql 'Tony Stark'
       expect(facebook_user.email).to eql 'test@facebook.com'
+
+      click_link 'Sair'
+      expect(page).to have_text 'USP Eventos'
+    end
+
+    it 'signs up with Google', js: true do
+      Rails.application.env_config['devise.mapping'] = Devise.mappings[:user] # If using Devise
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
+        provider: 'google_oauth2',
+        uid: '123545',
+        info: {
+          name: 'Steve Rogers',
+          email: 'test@gmail.com'
+        },
+        credentials: {
+          token: '123456',
+          expires_at: 10.day.from_now
+        }
+      )
+
+      visit '/'
+      expect(page).to have_link 'Cadastrar', count: 2
+
+      within('.inner') { click_link 'Cadastrar' }
+      expect(page).to have_link 'Google'
+
+      click_link 'Google'
+      expect(page).to have_text 'Autenticado com sucesso.'
+      expect(page).to have_text 'Nos diga do que você gosta!'
+      facebook_user = User.last
+      expect(facebook_user.name).to eql 'Steve Rogers'
+      expect(facebook_user.email).to eql 'test@gmail.com'
 
       click_link 'Sair'
       expect(page).to have_text 'USP Eventos'
