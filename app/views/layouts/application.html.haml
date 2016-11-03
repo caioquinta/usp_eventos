@@ -17,4 +17,5 @@
   %body
     = render 'layouts/header'
     = yield
-    = render 'layouts/footer'
+    - if !current_page?('/home') && !current_page?('/about') && !((current_page?(root_path) && user_signed_in?))
+      = render 'layouts/footer'
