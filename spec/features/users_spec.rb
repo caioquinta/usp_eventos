@@ -116,9 +116,9 @@ describe 'User', type: :feature do
       expect(page).to have_link 'Cadastrar', count: 2
 
       within('.inner') { click_link 'Cadastrar' }
-      expect(page).to have_link 'Entrar com Facebook'
+      expect(page).to have_link 'Facebook'
 
-      click_link 'Entrar com Facebook'
+      click_link 'Facebook'
       expect(page).to have_text 'Autenticado com sucesso com uma conta de Facebook.'
       expect(page).to have_text 'Nos diga do que você gosta!'
       facebook_user = User.last
