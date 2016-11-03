@@ -62,6 +62,9 @@ describe 'User', type: :feature do
       click_link 'Esqueci minha senha'
       expect(page).to have_text 'E-mail'
 
+      click_button 'Enviar instruções para nova senha'
+      expect(page).to have_text 'não pode ficar em branco'
+
       fill_in 'user_email', with: 'e-mail invalido'
       click_button 'Enviar instruções para nova senha'
       expect(page).to have_text 'não encontrado'
