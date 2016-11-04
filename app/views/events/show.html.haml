@@ -1,40 +1,41 @@
-.container-fluid.event_wrapper.col-lg-8.col-lg-offset-2{ class: "thumbnail_event_#{@event.id}"}
-  .planner_buttons
-    .col-lg-10= link_to "Voltar", :back
-    .col-lg-2.planner_buttons
-      - if @event.planner == current_user
-        = link_to '', edit_event_path(@event.id), class: 'btn btn-primary ion-edit'
-        = link_to '', event_path(@event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
-  .col-lg-12.panel.panel-default
-    .panel-heading
-      %h2= @event.name
-    - if @event.avatar.exists?
-      .poster
-        = image_tag @event.avatar.url, class: 'img-responsive'
-    .panel-body
-      .dates
+.container-fluid.event_wrapper{ class: "thumbnail_event_#{@event.id}"}
+  .row.col-lg-8.col-lg-offset-2
+    .planner_buttons
+      .col-lg-10= link_to "Voltar", :back
+      .col-lg-2.planner_buttons
+        - if @event.planner == current_user
+          = link_to '', edit_event_path(@event.id), class: 'btn btn-primary ion-edit'
+          = link_to '', event_path(@event.id), method: :delete, data: { confirm: 'Você tem certeza que deseja apagar o evento?' }, class: 'btn btn-primary ion-trash-a'
+    .col-lg-12.panel.panel-default
+      .panel-heading
+        %h2= @event.name
+      - if @event.avatar.exists?
+        .poster
+          = image_tag @event.avatar.url, class: 'img-responsive'
+      .panel-body
+        .dates
+          .col-lg-4
+            De
+            - if !@event.begin_date.nil?
+              = @event.begin_date.strftime('%d/%m/%Y')
+              às
+              = @event.begin_date.strftime('%H:%M')
+          .col-lg-8
+            Até
+            - if !@event.end_date.nil?
+              = @event.end_date.strftime('%d/%m/%Y')
+              às
+              = @event.end_date.strftime('%H:%M')
         .col-lg-4
-          De
-          - if !@event.begin_date.nil?
-            = @event.begin_date.strftime('%d/%m/%Y')
-            às
-            = @event.begin_date.strftime('%H:%M')
-        .col-lg-8
-          Até
-          - if !@event.end_date.nil?
-            = @event.end_date.strftime('%d/%m/%Y')
-            às
-            = @event.end_date.strftime('%H:%M')
-      .col-lg-4
-        %h3 Preço:
-        .currency= @event.price
-      .col-lg-4
-        %h3 Local:
-        .local= @event.location
-      .col-lg-4
-        %h3 Interessados:
-        .col-lg-3.participants= @event.participants.count
-        .col-lg-9= render 'users/event_box_buttons', event: @event
-      .col-lg-12
-        %h3 Descrição:
-        = simple_format @event.description
+          %h3 Preço:
+          .currency= @event.price
+        .col-lg-4
+          %h3 Local:
+          .local= @event.location
+        .col-lg-4
+          %h3 Interessados:
+          .col-lg-3.participants= @event.participants.count
+          .col-lg-9= render 'users/event_box_buttons', event: @event
+        .col-lg-12
+          %h3 Descrição:
+          = simple_format @event.description
